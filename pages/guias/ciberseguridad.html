@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos de Ciberseguridad | HackEnvironment</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Conceptos básicos de ciberseguridad: amenazas, principios de seguridad y protección de sistemas.">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="brand-logo">
+                <img src="../../assets/img/logos/hackenvironment-logo.png" alt="HackEnvironment Logo">
+                <span>HackEnvironment</span>
+            </a>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-tools"></i> Herramientas <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../herramientas/nmap.html">Nmap</a></li>
+                        <li><a href="../herramientas/wireshark.html">Wireshark</a></li>
+                        <li><a href="../herramientas/metasploit.html">Metasploit</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-network-wired"></i> Redes <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../redes/wifi-advanced.html">WiFi Avanzado</a></li>
+                        <li><a href="../redes/topologias.html">Topologías</a></li>
+                    </ul>
+                </li>
+                <li><a href="pentesting.html"><i class="fas fa-book"></i> Guías</a></li>
+            </ul>
+            <div class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Encabezado -->
+    <header class="hero-subpage">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1><i class="fas fa-shield-alt"></i> Fundamentos de Ciberseguridad</h1>
+            <p class="subtitle">Principios esenciales para proteger sistemas y redes</p>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="container">
+        <!-- Introducción -->
+        <section class="section">
+            <h2><i class="fas fa-lock"></i> ¿Qué es la Ciberseguridad?</h2>
+            <p>La ciberseguridad es la práctica de proteger <strong>sistemas, redes y datos</strong> de ataques digitales. Abarca:</p>
+            <div class="grid-3">
+                <div class="feature-card">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>Confidencialidad</h3>
+                    <p>Solo usuarios autorizados acceden a la información.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Integridad</h3>
+                    <p>Los datos no son alterados sin autorización.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-plug"></i>
+                    <h3>Disponibilidad</h3>
+                    <p>Los sistemas están accesibles cuando se necesitan.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Amenazas comunes -->
+        <section class="section">
+            <h2><i class="fas fa-bug"></i> Amenazas Comunes</h2>
+            <div class="threats-container">
+                <div class="threat-card">
+                    <div class="threat-icon malware">
+                        <i class="fas fa-virus"></i>
+                    </div>
+                    <h3>Malware</h3>
+                    <p><strong>Ejemplos:</strong> Virus, ransomware, spyware.</p>
+                    <a href="#malware" class="btn btn-outline">Ver defensas</a>
+                </div>
+                <div class="threat-card">
+                    <div class="threat-icon phishing">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <h3>Phishing</h3>
+                    <p>Suplantación de identidad para robo de credenciales.</p>
+                    <a href="#phishing" class="btn btn-outline">Ver defensas</a>
+                </div>
+                <div class="threat-card">
+                    <div class="threat-icon dos">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>DoS/DDoS</h3>
+                    <p>Ataques de denegación de servicio.</p>
+                    <a href="#dos" class="btn btn-outline">Ver defensas</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Defensas -->
+        <section class="section" id="defensas">
+            <h2><i class="fas fa-shield-virus"></i> Técnicas de Defensa</h2>
+            
+            <h3 id="malware"><i class="fas fa-virus-slash"></i> Contra Malware</h3>
+            <ul>
+                <li><strong>Antivirus/EDR:</strong> Soluciones como CrowdStrike o Windows Defender.</li>
+                <li><strong>Listas de ejecución:</strong> Whitelisting de aplicaciones permitidas.</li>
+                <li><strong>Parches:</strong> Mantener sistemas actualizados.</li>
+            </ul>
+            
+            <h3 id="phishing"><i class="fas fa-fishing-rod"></i> Contra Phishing</h3>
+            <div class="code-block">
+                <pre><code class="language-markdown"># Señales de correos phishing:
+1. Remitente sospechoso (ej: soporte@servici0.com)
+2. Urgencia ("Su cuenta será bloqueada")
+3. Enlaces acortados o dominios extraños
+4. Archivos adjuntos inesperados (.exe, .js)</code></pre>
+            </div>
+            
+            <h3 id="dos"><i class="fas fa-traffic-light-stop"></i> Contra DoS/DDoS</h3>
+            <ul>
+                <li><strong>Rate limiting:</strong> En firewalls y servidores web.</li>
+                <li><strong>CDN:</strong> Usar Cloudflare o Akamai para filtrar tráfico.</li>
+                <li><strong>Redundancia:</strong> Balanceadores de carga y múltiples servidores.</li>
+            </ul>
+        </section>
+
+        <!-- Buenas prácticas -->
+        <section class="section">
+            <h2><i class="fas fa-check-double"></i> Buenas Prácticas</h2>
+            <div class="best-practices">
+                <div class="practice-card">
+                    <i class="fas fa-key"></i>
+                    <h3>Contraseñas Seguras</h3>
+                    <ul>
+                        <li>Mínimo 12 caracteres</li>
+                        <li>Usar gestores (Bitwarden, KeePass)</li>
+                        <li>Activar MFA</li>
+                    </ul>
+                </div>
+                <div class="practice-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Seguridad en Desarrollo</h3>
+                    <ul>
+                        <li>OWASP Top 10</li>
+                        <li>SAST/DAST (SonarQube, ZAP)</li>
+                        <li>Principio de menor privilegio</li>
+                    </ul>
+                </div>
+                <div class="practice-card">
+                    <i class="fas fa-user-lock"></i>
+                    <h3>Concienciación</h3>
+                    <ul>
+                        <li>Capacitar usuarios</li>
+                        <li>Simulaciones de phishing</li>
+                        <li>Políticas claras</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recursos adicionales -->
+        <section class="section">
+            <h2><i class="fas fa-book-open"></i> Recursos</h2>
+            <div class="resources-grid">
+                <a href="https://owasp.org/www-project-top-ten/" target="_blank" class="resource-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>OWASP Top 10</h3>
+                    <p>Riesgos críticos en aplicaciones web</p>
+                </a>
+                <a href="https://www.cisecurity.org/controls/" target="_blank" class="resource-card">
+                    <i class="fas fa-list-check"></i>
+                    <h3>CIS Controls</h3>
+                    <p>Controles de seguridad prioritarios</p>
+                </a>
+                <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf" target="_blank" class="resource-card">
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>NIST SP 800-53</h3>
+                    <p>Estándar de controles de seguridad</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Modelos de Seguridad -->
+        <section class="section">
+            <h2><i class="fas fa-chess-board"></i> Modelos de Seguridad</h2>
+            <div class="model-cards" style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                <div class="model-card" style="background: var(--light); border-radius: 8px; padding: 1.5rem; flex: 1 1 250px;">
+                    <h3>CIA Triad</h3>
+                    <ul>
+                        <li><strong>Confidentiality</strong>: Cifrado, controles de acceso</li>
+                        <li><strong>Integrity</strong>: Firmas digitales, hashes</li>
+                        <li><strong>Availability</strong>: Redundancia, backups</li>
+                    </ul>
+                </div>
+                <div class="model-card" style="background: var(--light); border-radius: 8px; padding: 1.5rem; flex: 1 1 250px;">
+                    <h3>Zero Trust</h3>
+                    <ul>
+                        <li>"Nunca confíes, siempre verifica"</li>
+                        <li>Microsegmentación</li>
+                        <li>Autenticación continua</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ejemplo de Configuración Segura -->
+        <section class="section">
+            <h2><i class="fas fa-terminal"></i> Ejemplo de Configuración Segura</h2>
+            <div class="code-block">
+                <pre><code class="language-bash"># Configuración básica de iptables (Linux)
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT  # Permitir SSH
+iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+iptables -P INPUT DROP  # Denegar todo lo demás
+iptables -P FORWARD DROP
+iptables -P OUTPUT ACCEPT</code></pre>
+            </div>
+        </section>
+
+        <!-- Tipos de Cifrado -->
+        <section class="section">
+            <h2><i class="fas fa-lock"></i> Tipos de Cifrado</h2>
+            <div class="code-block" style="overflow-x:auto;">
+                <table style="width:100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="border-bottom:1px solid #ccc; padding: 0.5rem;">Tipo</th>
+                            <th style="border-bottom:1px solid #ccc; padding: 0.5rem;">Ejemplos</th>
+                            <th style="border-bottom:1px solid #ccc; padding: 0.5rem;">Uso típico</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 0.5rem;">Simétrico</td>
+                            <td style="padding: 0.5rem;">AES-256, ChaCha20</td>
+                            <td style="padding: 0.5rem;">Cifrado de datos</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.5rem;">Asimétrico</td>
+                            <td style="padding: 0.5rem;">RSA, ECC</td>
+                            <td style="padding: 0.5rem;">Intercambio de claves</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.5rem;">Hashing</td>
+                            <td style="padding: 0.5rem;">SHA-256, bcrypt</td>
+                            <td style="padding: 0.5rem;">Almacenar contraseñas</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="../../assets/img/logos/hackenvironment-logo-white.png" alt="HackEnvironment Logo">
+                <span>HackEnvironment</span>
+            </div>
+            <p class="footer-disclaimer">Este sitio es educativo. No nos hacemos responsables del mal uso de la información.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/app.js"></script>
+</body>
+</html>

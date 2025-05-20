@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackEnvironment | Pentesting & Network Security</title>
+    <meta name="description" content="Guías completas de pentesting, análisis de redes y seguridad ofensiva con herramientas profesionales">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="icon" href="assets/img/logos/hackenvironment-favicon.ico">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegación superior -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <img src="assets/img/logos/hackenvironment-logo.png" alt="HackEnvironment Logo">
+                <span>HackEnvironment</span>
+            </a>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-tools"></i> Herramientas <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pages/herramientas/nmap.html">Nmap</a></li>
+                        <li><a href="pages/herramientas/wireshark.html">Wireshark</a></li>
+                        <li><a href="pages/herramientas/metasploit.html">Metasploit</a></li>
+                        <li><a href="pages/herramientas/kali.html">Kali Linux</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-network-wired"></i> Redes <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pages/redes/wifi-advanced.html">WiFi Avanzado</a></li>
+                        <li><a href="pages/redes/topologias.html">Topologías</a></li>
+                        <li><a href="pages/redes/tcp-ip.html">TCP/IP</a></li>
+                    </ul>
+                </li>
+                <li><a href="pages/guias/pentesting.html"><i class="fas fa-book"></i> Guías</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contacto</a></li>
+            </ul>
+            <div class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Domina el Arte del Pentesting</h1>
+            <p class="subtitle">Aprende técnicas profesionales de seguridad ofensiva y análisis de redes con guías prácticas</p>
+            <div class="hero-buttons">
+                <a href="pages/guias/pentesting.html" class="btn btn-primary">
+                    <i class="fas fa-arrow-right"></i> Comenzar Pentesting
+                </a>
+                <a href="#featured-tools" class="btn btn-secondary">
+                    <i class="fas fa-tools"></i> Ver Herramientas
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección de características principales -->
+    <section class="features-section">
+        <div class="container">
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Seguridad Ofensiva</h3>
+                <p>Técnicas de pentesting ético para identificar vulnerabilidades antes que los atacantes.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-wifi"></i>
+                <h3>Análisis WiFi</h3>
+                <p>Optimización de redes inalámbricas, mapas de calor y hardening de puntos de acceso.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-code"></i>
+                <h3>Scripting</h3>
+                <p>Automatización de pruebas con NSE, Python y Bash para auditorías eficientes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de herramientas destacadas -->
+    <section id="featured-tools" class="tools-section">
+        <div class="section-header">
+            <h2>Herramientas Imprescindibles</h2>
+            <p>El arsenal esencial para todo profesional de ciberseguridad</p>
+        </div>
+        <div class="tools-grid">
+            <!-- Tarjeta Nmap -->
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <img src="assets/img/logos/nmap-logo.png" alt="Nmap Logo">
+                </div>
+                <h3>Nmap</h3>
+                <p>Escáner de red para descubrimiento de hosts y servicios.</p>
+                <div class="tool-links">
+                    <a href="pages/herramientas/nmap.html" class="btn btn-outline">
+                        <i class="fas fa-book"></i> Guía
+                    </a>
+                    <a href="https://nmap.org/download.html" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-download"></i> Descargar
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Tarjeta Wireshark -->
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <img src="assets/img/logos/wireshark-logo.png" alt="Wireshark Logo">
+                </div>
+                <h3>Wireshark</h3>
+                <p>Analizador de protocolos para inspección de tráfico.</p>
+                <div class="tool-links">
+                    <a href="pages/herramientas/wireshark.html" class="btn btn-outline">
+                        <i class="fas fa-book"></i> Guía
+                    </a>
+                    <a href="https://www.wireshark.org/download.html" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-download"></i> Descargar
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Tarjeta Metasploit -->
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <img src="assets/img/logos/metasploit-logo.png" alt="Metasploit Logo">
+                </div>
+                <h3>Metasploit</h3>
+                <p>Framework para desarrollo y ejecución de exploits.</p>
+                <div class="tool-links">
+                    <a href="pages/herramientas/metasploit.html" class="btn btn-outline">
+                        <i class="fas fa-book"></i> Guía
+                    </a>
+                    <a href="https://www.metasploit.com/download" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-download"></i> Descargar
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Tarjeta Kali Linux -->
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <img src="assets/img/logos/kali-logo.png" alt="Kali Linux Logo">
+                </div>
+                <h3>Kali Linux</h3>
+                <p>Distribución Linux especializada en pentesting.</p>
+                <div class="tool-links">
+                    <a href="pages/herramientas/kali.html" class="btn btn-outline">
+                        <i class="fas fa-book"></i> Guía
+                    </a>
+                    <a href="https://www.kali.org/get-kali/" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-download"></i> Descargar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de guías rápidas -->
+    <section class="quick-guides">
+        <div class="section-header">
+            <h2>Guías Rápidas</h2>
+            <p>Recursos descargables para referencia rápida</p>
+        </div>
+        <div class="guides-grid">
+            <div class="guide-card">
+                <div class="guide-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3>Comandos Nmap</h3>
+                <p>Todos los parámetros esenciales en una página</p>
+                <a href="assets/pdf/cheatsheets/nmap-cheatsheet.pdf" download class="btn btn-primary">
+                    <i class="fas fa-file-pdf"></i> Descargar PDF
+                </a>
+            </div>
+            
+            <div class="guide-card">
+                <div class="guide-icon">
+                    <i class="fas fa-traffic-light"></i>
+                </div>
+                <h3>Filtros Wireshark</h3>
+                <p>Expresiones para análisis de tráfico</p>
+                <a href="assets/pdf/cheatsheets/wireshark-filters.pdf" download class="btn btn-primary">
+                    <i class="fas fa-file-pdf"></i> Descargar PDF
+                </a>
+            </div>
+            
+            <div class="guide-card">
+                <div class="guide-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>Hardening WiFi</h3>
+                <p>Checklist de seguridad para redes inalámbricas</p>
+                <a href="assets/pdf/cheatsheets/wifi-hardening.pdf" download class="btn btn-primary">
+                    <i class="fas fa-file-pdf"></i> Descargar PDF
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de últimas entradas -->
+    <section class="latest-posts">
+        <div class="section-header">
+            <h2>Últimos Contenidos</h2>
+            <p>Artículos técnicos recientes</p>
+        </div>
+        <div class="posts-grid">
+            <article class="post-card">
+                <img src="assets/img/screenshots/wifi-heatmap.jpg" alt="Mapa de calor WiFi">
+                <div class="post-content">
+                    <h3>Optimización de Redes WiFi con Mapas de Calor</h3>
+                    <p class="post-meta"><i class="far fa-calendar-alt"></i> 15 Oct 2023</p>
+                    <p>Aprende a interpretar mapas de calor para maximizar cobertura y minimizar interferencias...</p>
+                    <a href="pages/redes/wifi-advanced.html" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <img src="assets/img/screenshots/metasploit-exploit.jpg" alt="Metasploit Framework">
+                <div class="post-content">
+                    <h3>Explotación de Vulnerabilidades con Metasploit</h3>
+                    <p class="post-meta"><i class="far fa-calendar-alt"></i> 8 Oct 2023</p>
+                    <p>Guía paso a paso para identificar y explotar vulnerabilidades comunes...</p>
+                    <a href="pages/herramientas/metasploit.html" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <img src="assets/img/diagrams/tcp-ip-stack.png" alt="Pila TCP/IP">
+                <div class="post-content">
+                    <h3>Análisis Profundo del Protocolo TCP/IP</h3>
+                    <p class="post-meta"><i class="far fa-calendar-alt"></i> 1 Oct 2023</p>
+                    <p>Entiende cada capa del modelo TCP/IP y su relevancia en seguridad de redes...</p>
+                    <a href="pages/redes/tcp-ip.html" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Sección de contacto -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-info">
+                <h2>Contacto</h2>
+                <p>¿Preguntas técnicas? ¿Sugerencias? Contáctanos</p>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:contacto@hackenvironment.com">contacto@hackenvironment.com</a>
+                    </li>
+                    <li>
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/hackenvironment" target="_blank">github.com/hackenvironment</a>
+                    </li>
+                    <li>
+                        <i class="fab fa-twitter"></i>
+                        <a href="https://twitter.com/hackenvironment" target="_blank">@hackenvironment</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="4" placeholder="Mensaje" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="assets/img/logos/hackenvironment-logo-white.png" alt="HackEnvironment Logo">
+                <span>HackEnvironment</span>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><h3>Herramientas</h3></li>
+                    <li><a href="pages/herramientas/nmap.html">Nmap</a></li>
+                    <li><a href="pages/herramientas/wireshark.html">Wireshark</a></li>
+                    <li><a href="pages/herramientas/metasploit.html">Metasploit</a></li>
+                    <li><a href="pages/herramientas/kali.html">Kali Linux</a></li>
+                </ul>
+                <ul>
+                    <li><h3>Redes</h3></li>
+                    <li><a href="pages/redes/wifi-advanced.html">WiFi Avanzado</a></li>
+                    <li><a href="pages/redes/topologias.html">Topologías</a></li>
+                    <li><a href="pages/redes/tcp-ip.html">Protocolo TCP/IP</a></li>
+                </ul>
+                <ul>
+                    <li><h3>Recursos</h3></li>
+                    <li><a href="pages/guias/pentesting.html">Guía de Pentesting</a></li>
+                    <li><a href="pages/guias/hardening.html">Hardening de Redes</a></li>
+                    <li><a href="pages/guias/ciberseguridad.html">Fundamentos</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 HackEnvironment. Todos los derechos reservados. | <a href="#">Política de Privacidad</a> | <a href="#">Términos de Uso</a></p>
+            <p class="disclaimer">Este sitio es solo con fines educativos. No nos hacemos responsables del mal uso de la información proporcionada.</p>
+        </div>
+    </footer>
+
+    <!-- Botón para ir arriba -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

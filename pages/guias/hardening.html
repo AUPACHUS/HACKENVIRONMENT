@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardening de Redes y Sistemas | HackEnvironment</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Guía completa de hardening para redes, servidores y aplicaciones. Mejora la seguridad de tus sistemas con estas prácticas.">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="brand-logo">
+                <img src="../../assets/img/logos/hackenvironment-logo.png" alt="HackEnvironment Logo">
+                <span>HackEnvironment</span>
+            </a>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-tools"></i> Herramientas <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../herramientas/nmap.html">Nmap</a></li>
+                        <li><a href="../herramientas/wireshark.html">Wireshark</a></li>
+                        <li><a href="../herramientas/metasploit.html">Metasploit</a></li>
+                        <li><a href="../herramientas/kali.html">Kali Linux</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-network-wired"></i> Redes <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../redes/wifi-advanced.html">WiFi Avanzado</a></li>
+                        <li><a href="../redes/topologias.html">Topologías</a></li>
+                        <li><a href="../redes/tcp-ip.html">TCP/IP</a></li>
+                    </ul>
+                </li>
+                <li><a href="pentesting.html"><i class="fas fa-book"></i> Guías</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contacto</a></li>
+            </ul>
+            <div class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Encabezado -->
+    <header class="hero-subpage">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1><i class="fas fa-lock"></i> Hardening de Redes y Sistemas</h1>
+            <p class="subtitle">Protege tus infraestructuras contra ataques con estas prácticas de seguridad</p>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="container">
+        <!-- Introducción -->
+        <section class="section">
+            <h2><i class="fas fa-shield-alt"></i> ¿Qué es el Hardening?</h2>
+            <p>El <strong>hardening</strong> es el proceso de fortalecer sistemas, redes y aplicaciones para reducir su superficie de ataque. Incluye:</p>
+            <ul>
+                <li>Eliminar servicios innecesarios.</li>
+                <li>Aplicar parches de seguridad.</li>
+                <li>Configurar firewalls y políticas de acceso.</li>
+                <li>Monitorear logs y actividades sospechosas.</li>
+            </ul>
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i>
+                <strong>Objetivo:</strong> Minimizar vulnerabilidades siguiendo el principio de <em>mínimos privilegios</em>.
+            </div>
+        </section>
+
+        <!-- Hardening de Redes -->
+        <section class="section">
+            <h2><i class="fas fa-network-wired"></i> Hardening de Redes</h2>
+            
+            <h3>1. Configuración de Switches y Routers</h3>
+            <div class="code-block">
+                <pre><code class="language-bash"># Ejemplo en Cisco IOS (protección básica)
+enable
+configure terminal
+! Deshabilitar servicios innecesarios
+no ip http server
+no cdp run
+no ip source-route
+! Configurar contraseñas seguras
+enable secret [contraseña_fuerte]
+service password-encryption
+! Restringir acceso SSH
+ip ssh version 2
+access-list 10 permit [IP_admin]
+line vty 0 15
+ access-class 10 in
+ transport input ssh
+exit
+! Habilitar logging
+logging host [IP_syslog]
+logging trap informational</code></pre>
+            </div>
+
+            <h3>2. Protección de Redes WiFi</h3>
+            <ul>
+                <li><strong>Usar WPA3-Enterprise</strong> (evitar WPA2-Personal).</li>
+                <li><strong>Desactivar WPS</strong> (vulnerable a ataques de fuerza bruta).</li>
+                <li><strong>Filtrar por MAC</strong> (aunque no es infalible).</li>
+                <li><strong>Aislar clientes</strong> en redes públicas.</li>
+            </ul>
+
+            <h3>3. Segmentación de Red</h3>
+            <p>Divide la red en VLANs para:</p>
+            <ul>
+                <li><strong>VLAN de administración</strong> (acceso restringido).</li>
+                <li><strong>VLAN para dispositivos IoT</strong> (aislados de datos críticos).</li>
+                <li><strong>VLAN para invitados</strong> (sin acceso a recursos internos).</li>
+            </ul>
+        </section>
+
+        <!-- Hardening de Servidores -->
+        <section class="section">
+            <h2><i class="fas fa-server"></i> Hardening de Servidores</h2>
+            
+            <h3>1. Linux (Ubuntu/CentOS)</h3>
+            <div class="code-block">
+                <pre><code class="language-bash"># Actualizar el sistema
+sudo apt update && sudo apt upgrade -y
+
+# Instalar herramientas básicas de seguridad
+sudo apt install fail2ban ufw unattended-upgrades
+
+# Configurar firewall (UFW)
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow ssh
+sudo ufw enable
+
+# Deshabilitar root por SSH
+sudo sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
+sudo systemctl restart sshd
+
+# Habilitar automatic updates
+sudo dpkg-reconfigure -plow unattended-upgrades</code></pre>
+            </div>
+
+            <h3>2. Windows Server</h3>
+            <ul>
+                <li><strong>Desactivar SMBv1</strong> (vulnerable a WannaCry).</li>
+                <li><strong>Configurar GPOs de seguridad</strong> (mínimos privilegios).</li>
+                <li><strong>Habilitar BitLocker</strong> para cifrado de discos.</li>
+                <li><strong>Auditar eventos críticos</strong> (Event Viewer).</li>
+            </ul>
+        </section>
+
+        <!-- Hardening de Aplicaciones -->
+        <section class="section">
+            <h2><i class="fas fa-code"></i> Hardening de Aplicaciones Web</h2>
+            
+            <h3>1. Configuración de Apache/Nginx</h3>
+            <div class="code-block">
+                <pre><code class="language-bash"># Ejemplo para Apache (httpd.conf)
+ServerTokens Prod
+ServerSignature Off
+TraceEnable Off
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "DENY"
+Header always set Content-Security-Policy "default-src 'self'"</code></pre>
+            </div>
+
+            <h3>2. Protección contra OWASP Top 10</h3>
+            <ul>
+                <li><strong>SQL Injection</strong>: Usar consultas preparadas (PDO, ORM).</li>
+                <li><strong>XSS</strong>: Escapar salidas (HTML, JS, URL).</li>
+                <li><strong>CSRF</strong>: Implementar tokens en formularios.</li>
+                <li><strong>Broken Authentication</strong>: MFA y contraseñas complejas.</li>
+            </ul>
+        </section>
+
+        <!-- Checklist descargable -->
+        <section class="section">
+            <h2><i class="fas fa-check-circle"></i> Checklist de Hardening</h2>
+            <p>Descarga esta lista de verificación para auditorías rápidas:</p>
+            <div class="download-card">
+                <i class="fas fa-file-pdf"></i>
+                <h3>Checklist Completo de Hardening</h3>
+                <p>Incluye redes, servidores y aplicaciones.</p>
+                <a href="../../assets/pdf/cheatsheets/hardening-checklist.pdf" download class="btn btn-primary">
+                    <i class="fas fa-download"></i> Descargar PDF
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="../../assets/img/logos/hackenvironment-logo-white.png" alt="HackEnvironment Logo">
+                <span>HackEnvironment</span>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><h3>Herramientas</h3></li>
+                    <li><a href="../herramientas/nmap.html">Nmap</a></li>
+                    <li><a href="../herramientas/wireshark.html">Wireshark</a></li>
+                </ul>
+                <ul>
+                    <li><h3>Redes</h3></li>
+                    <li><a href="../redes/wifi-advanced.html">WiFi Avanzado</a></li>
+                    <li><a href="../redes/topologias.html">Topologías</a></li>
+                </ul>
+                <ul>
+                    <li><h3>Guías</h3></li>
+                    <li><a href="pentesting.html">Pentesting</a></li>
+                    <li><a href="hardening.html">Hardening</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 HackEnvironment. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/app.js"></script>
+</body>
+</html>

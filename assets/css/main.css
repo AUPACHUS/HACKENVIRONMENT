@@ -1,0 +1,584 @@
+/* Variables de color */
+:root {
+    --primary: #8a2be2;  /* Violeta hacker */
+    --primary-dark: #5e1a9a;
+    --secondary: #00bfff;  /* Azul tecnológico */
+    --accent: #ff5722;  /* Naranja de alerta */
+    --dark: #121212;
+    --darker: #0a0a0a;
+    --light: #f8f9fa;
+    --lighter: #ffffff;
+    --gray: #6c757d;
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --info: #17a2b8;
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    background-color: var(--light);
+    transition: all 0.3s ease;
+}
+
+body.dark-mode {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+/* Tipografía */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Share Tech Mono', monospace;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.dark-mode h1, 
+.dark-mode h2, 
+.dark-mode h3, 
+.dark-mode h4, 
+.dark-mode h5, 
+.dark-mode h6 {
+    color: var(--secondary);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary);
+    transition: color 0.3s ease;
+}
+
+.dark-mode a {
+    color: var(--secondary);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+.dark-mode a:hover {
+    color: var(--secondary);
+}
+
+/* Layout */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Componentes reutilizables */
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-secondary {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #0095d9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+
+.dark-mode .btn-outline {
+    border-color: var(--secondary);
+    color: var(--secondary);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+.dark-mode .btn-outline:hover {
+    background-color: var(--secondary);
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.dark-mode .card {
+    background: #1e1e1e;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Estilos específicos para componentes */
+.main-nav {
+    background-color: var(--dark);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.brand-logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+}
+
+.nav-menu li {
+    margin-left: 1.5rem;
+    position: relative;
+}
+
+.nav-menu a {
+    color: white;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu a i {
+    margin-right: 8px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--darker);
+    min-width: 200px;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown-menu li {
+    margin: 0;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a {
+    padding: 0.5rem 0;
+    color: white;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 1.5rem;
+}
+
+.hero {
+    position: relative;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    background: url('../img/network-bg.jpg') no-repeat center center/cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.hero .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Estilos para subpáginas */
+.hero-subpage {
+    height: 50vh;
+    background: url('../img/network-security.jpg') no-repeat center center/cover;
+}
+
+.hero-subpage .hero-content {
+    padding-top: 100px;
+    text-align: center;
+}
+
+/* Secciones */
+.section {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--light);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.dark-mode .section {
+    background: var(--dark);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Alertas */
+.alert {
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.alert-info {
+    background: rgba(23, 162, 184, 0.2);
+    border-left: 4px solid var(--info);
+}
+
+.alert-warning {
+    background: rgba(255, 193, 7, 0.2);
+    border-left: 4px solid var(--warning);
+}
+
+.alert i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+/* Bloques de código */
+.code-block {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    margin: 1rem 0;
+}
+
+/* Tarjeta de descarga */
+.download-card {
+    background: var(--light);
+    border: 1px dashed var(--primary);
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.download-card i {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.dark-mode .download-card {
+    background: var(--dark);
+    border-color: var(--secondary);
+}
+
+/* Estilos específicos para kali.html */
+.hero-subpage {
+    background: url('../img/kali-background.jpg') no-repeat center center/cover;
+}
+
+.intro-kali {
+    position: relative;
+}
+
+.img-float-right {
+    float: right;
+    width: 50%;
+    max-width: 500px;
+    margin: 0 0 1.5rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.download-box {
+    background: rgba(138, 43, 226, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.download-box span {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+    padding: 0.5rem 1rem;
+    background: var(--light);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .tab-btn {
+    background: #333;
+}
+
+.tab-btn.active {
+    background: var(--primary);
+    color: white;
+}
+
+.tab-content {
+    display: none;
+    padding: 1rem;
+    background: var(--light);
+    border-radius: 8px;
+}
+
+.dark-mode .tab-content {
+    background: #1e1e1e;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Tabla de herramientas */
+.tools-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+}
+
+.tools-table th, .tools-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.dark-mode .tools-table th,
+.dark-mode .tools-table td {
+    border-bottom: 1px solid #444;
+}
+
+.tools-table th {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Grid de comandos */
+.command-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.command-card {
+    background: var(--light);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.dark-mode .command-card {
+    background: #1e1e1e;
+}
+
+.command-card pre {
+    margin: 0;
+    overflow-x: auto;
+}
+
+/* Acordeón */
+.accordion-item {
+    margin-bottom: 0.5rem;
+}
+
+.accordion-btn {
+    width: 100%;
+    padding: 1rem;
+    text-align: left;
+    background: var(--light);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dark-mode .accordion-btn {
+    background: #333;
+}
+
+.accordion-btn:hover {
+    background: #e9e9e9;
+}
+
+.dark-mode .accordion-btn:hover {
+    background: #444;
+}
+
+.accordion-content {
+    padding: 0 1rem;
+    display: none;
+    background: #f9f9f9;
+    border-radius: 0 0 4px 4px;
+}
+
+.dark-mode .accordion-content {
+    background: #252525;
+}
+
+@media (max-width: 992px) {
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
+        background-color: var(--dark);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        transition: left 0.3s ease;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu li {
+        margin: 1rem 0;
+    }
+
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        background-color: transparent;
+        display: none;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1rem;
+    }
+
+    .img-float-right {
+        float: none;
+        width: 100%;
+        margin: 0 0 1.5rem 0;
+    }
+}

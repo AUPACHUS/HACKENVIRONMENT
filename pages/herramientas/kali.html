@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kali Linux - Guía Completa | HackEnvironment</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Domina Kali Linux: instalación, configuración y uso de herramientas para pentesting ético.">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="brand-logo">
+                <img src="../../assets/img/logos/hackenvironment-logo.png" alt="HackEnvironment Logo">
+                <span>HackEnvironment</span>
+            </a>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-tools"></i> Herramientas <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                        <li><a href="kali.html" class="active">Kali Linux</a></li>
+                    </ul>
+                </li>
+                <li><a href="../guias/pentesting.html"><i class="fas fa-book"></i> Guías</a></li>
+            </ul>
+            <div class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Encabezado -->
+    <header class="hero-subpage">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1><i class="fab fa-linux"></i> Kali Linux</h1>
+            <p class="subtitle">La distribución líder para pruebas de penetración y seguridad ofensiva</p>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="container">
+        <!-- Introducción -->
+        <section class="section">
+            <div class="intro-kali">
+                <img src="../../assets/img/screenshots/kali-desktop.png" alt="Kali Linux Desktop" class="img-float-right">
+                <h2><i class="fas fa-info-circle"></i> ¿Qué es Kali Linux?</h2>
+                <p>Kali Linux es una distribución basada en <strong>Debian</strong> diseñada específicamente para <strong>pentesting</strong> y <strong>análisis forense digital</strong>, desarrollada por Offensive Security.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> +600 herramientas preinstaladas</li>
+                    <li><i class="fas fa-check"></i> Soporte para ARM (Raspberry Pi, Android)</li>
+                    <li><i class="fas fa-check"></i> Entorno personalizado para seguridad</li>
+                </ul>
+                <div class="download-box">
+                    <a href="https://www.kali.org/get-kali/" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-download"></i> Descargar Kali Linux
+                    </a>
+                    <span>Versión actual: 2023.3</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Métodos de instalación -->
+        <section class="section">
+            <h2><i class="fas fa-download"></i> Instalación</h2>
+            
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="bare-metal">Instalación Completa</button>
+                <button class="tab-btn" data-tab="virtualbox">VirtualBox</button>
+                <button class="tab-btn" data-tab="wsl">WSL 2</button>
+                <button class="tab-btn" data-tab="live">Live USB</button>
+            </div>
+            
+            <div class="tab-content active" id="bare-metal">
+                <h3><i class="fas fa-laptop"></i> Instalación en Hardware</h3>
+                <ol>
+                    <li>Descargar imagen ISO desde <a href="https://www.kali.org/get-kali/" target="_blank">kali.org</a></li>
+                    <li>Crear USB booteable con:
+                        <pre><code class="language-bash">dd if=kali-linux-2023.3-installer-amd64.iso of=/dev/sdX bs=4M status=progress</code></pre>
+                    </li>
+                    <li>Seguir el asistente gráfico (se recomienda cifrado LUKS)</li>
+                </ol>
+            </div>
+            
+            <div class="tab-content" id="virtualbox">
+                <h3><i class="fas fa-cube"></i> Configuración en VirtualBox</h3>
+                <ul>
+                    <li>Asignar mínimo <strong>2 CPUs</strong> y <strong>4GB RAM</strong></li>
+                    <li>Habilitar <strong>PAE/NX</strong> en configuración del sistema</li>
+                    <li>Configurar red en modo <strong>Bridge</strong> para pruebas reales</li>
+                    <li>Instalar Guest Additions para mejor rendimiento:
+                        <pre><code class="language-bash">sudo apt update && sudo apt install -y virtualbox-guest-x11</code></pre>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="tab-content" id="wsl">
+                <h3><i class="fab fa-windows"></i> Kali en WSL 2 (Windows)</h3>
+                <ol>
+                    <li>Activar WSL 2 en PowerShell como admin:
+                        <pre><code class="language-powershell">wsl --install</code></pre>
+                    </li>
+                    <li>Descargar Kali desde Microsoft Store</li>
+                    <li>Iniciar sesión con usuario creado durante instalación</li>
+                    <li><strong>Limitación:</strong> No soporta herramientas que requieran interfaz gráfica o acceso a hardware RAW</li>
+                </ol>
+            </div>
+            
+            <div class="tab-content" id="live">
+                <h3><i class="fas fa-usb"></i> Modo Live Persistente</h3>
+                <p>Permite guardar cambios en un USB:</p>
+                <pre><code class="language-bash"># Crear partición persistente (mínimo 8GB)
+gparted /dev/sdX  # Crear partición EXT4 con label "persistence"
+mkdir -p /mnt/usb
+mount /dev/sdX3 /mnt/usb
+echo "/ union" > /mnt/usb/persistence.conf
+umount /mnt/usb</code></pre>
+            </div>
+        </section>
+
+        <!-- Configuración inicial -->
+        <section class="section">
+            <h2><i class="fas fa-cog"></i> Configuración Inicial</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-btn">
+                        <i class="fas fa-key"></i> Actualizar sistema
+                    </button>
+                    <div class="accordion-content">
+                        <pre><code class="language-bash">sudo apt update && sudo apt full-upgrade -y
+sudo apt autoremove -y</code></pre>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-btn">
+                        <i class="fas fa-user-shield"></i> Crear usuario no root
+                    </button>
+                    <div class="accordion-content">
+                        <pre><code class="language-bash">sudo useradd -m -G sudo -s /bin/bash tu_usuario
+sudo passwd tu_usuario</code></pre>
+                        <p><strong>¡Importante!</strong> Evitar usar root para operaciones diarias.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-btn">
+                        <i class="fas fa-network-wired"></i> Configurar red
+                    </button>
+                    <div class="accordion-content">
+                        <p>Para ocultar tu dirección MAC:</p>
+                        <pre><code class="language-bash">sudo systemctl stop NetworkManager
+sudo macchanger -r wlan0
+sudo systemctl start NetworkManager</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Herramientas esenciales -->
+        <section class="section">
+            <h2><i class="fas fa-toolbox"></i> Herramientas Clasificadas</h2>
+            
+            <table class="tools-table">
+                <thead>
+                    <tr>
+                        <th>Categoría</th>
+                        <th>Herramienta</th>
+                        <th>Comando</th>
+                        <th>Uso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Reconocimiento</td>
+                        <td>Nmap</td>
+                        <td><code>nmap -sV 192.168.1.1</code></td>
+                        <td>Escaneo de puertos</td>
+                    </tr>
+                    <tr>
+                        <td>Análisis Web</td>
+                        <td>Burp Suite</td>
+                        <td><code>burpsuite</code></td>
+                        <td>Testing de aplicaciones</td>
+                    </tr>
+                    <tr>
+                        <td>Explotación</td>
+                        <td>Metasploit</td>
+                        <td><code>msfconsole</code></td>
+                        <td>Framework de exploits</td>
+                    </tr>
+                    <tr>
+                        <td>Wireless</td>
+                        <td>Aircrack-ng</td>
+                        <td><code>airmon-ng start wlan0</code></td>
+                        <td>Auditoría WiFi</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="alert alert-warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>Legalidad:</strong> Solo usar estas herramientas en redes propias o con permiso explícito.
+            </div>
+        </section>
+
+        <!-- Comandos útiles -->
+        <section class="section">
+            <h2><i class="fas fa-terminal"></i> Comandos Útiles</h2>
+            
+            <div class="command-grid">
+                <div class="command-card">
+                    <h3>Gestión de Paquetes</h3>
+                    <pre><code class="language-bash"># Buscar herramientas
+sudo apt search "pentest"
+
+# Instalar herramienta específica
+sudo apt install metasploit-framework
+
+# Ver herramientas instaladas
+apt list --installed | grep kali-tools</code></pre>
+                </div>
+                
+                <div class="command-card">
+                    <h3>Servicios</h3>
+                    <pre><code class="language-bash"># Iniciar/parar PostgreSQL (necesario para Metasploit)
+sudo systemctl start postgresql
+
+# Ver estado de servicios
+systemctl list-units --type=service</code></pre>
+                </div>
+                
+                <div class="command-card">
+                    <h3>Personalización</h3>
+                    <pre><code class="language-bash"># Cambiar shell a ZSH
+sudo apt install zsh
+chsh -s $(which zsh)
+
+# Instalar Oh My ZSH
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contenido Técnico Destacado -->
+        <section class="section">
+            <h2><i class="fas fa-star"></i> Contenido Técnico Destacado</h2>
+
+            <h3>1. Configuración de Entorno</h3>
+            <div class="code-block">
+                <pre><code class="language-bash"># Configurar alias útiles en ~/.zshrc
+alias ll='ls -la'
+alias updatekali='sudo apt update && sudo apt full-upgrade -y'
+alias myip='ip -br -c a'</code></pre>
+            </div>
+
+            <h3>2. Uso de Metasploit</h3>
+            <div class="code-block">
+                <pre><code class="language-bash"># Iniciar Metasploit con PostgreSQL
+sudo systemctl start postgresql
+msfdb init
+msfconsole
+
+# Comandos básicos en msf
+msf6 > search eternalblue
+msf6 > use exploit/windows/smb/ms17_010_eternalblue
+msf6 exploit > set RHOSTS 192.168.1.100
+msf6 exploit > exploit</code></pre>
+            </div>
+
+            <h3>3. Auditoría WiFi con Aircrack-ng</h3>
+            <div class="code-block">
+                <pre><code class="language-bash"># Poner interfaz en modo monitor
+sudo airmon-ng start wlan0
+
+# Escanear redes
+sudo airodump-ng wlan0mon
+
+# Capturar handshake (para WPA/WPA2)
+sudo airodump-ng -c 6 --bssid 00:11:22:33:44:55 -w captura wlan0mon
+# En otra terminal:
+sudo aireplay-ng -0 4 -a 00:11:22:33:44:55 -c FF:FF:FF:FF:FF:FF wlan0mon
+
+# Crackear con diccionario
+sudo aircrack-ng -w diccionario.txt captura-01.cap</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="../../assets/img/logos/hackenvironment-logo-white.png" alt="HackEnvironment Logo">
+                <span>HackEnvironment</span>
+            </div>
+            <p class="footer-disclaimer">Este contenido es solo para fines educativos.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/app.js"></script>
+    <script>
+        // Funcionalidad de tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.getElementById(tabId).classList.add('active');
+                btn.classList.add('active');
+            });
+        });
+
+        // Acordeón
+        const accordionBtns = document.querySelectorAll('.accordion-btn');
+        accordionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>

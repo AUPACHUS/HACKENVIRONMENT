@@ -1,0 +1,101 @@
+<section id="heatmaps">
+    <h2><i class="fas fa-fire"></i> Mapas de Calor WiFi</h2>
+    
+    <div class="content-block">
+        <img src="../assets/img/screenshots/ekahau-heatmap-comparison.jpg" alt="Comparación mapas de calor" class="content-image">
+        <div class="content-text">
+            <h3>Interpretación de Mapas de Calor</h3>
+            <p>Los mapas de calor visualizan la cobertura de señal en un espacio físico. Ekahau y otros herramientas profesionales permiten:</p>
+            <ul>
+                <li>Identificar zonas muertas (sin cobertura)</li>
+                <li>Detectar interferencias entre canales</li>
+                <li>Optimizar ubicación de puntos de acceso</li>
+                <li>Planear redes para alta densidad de dispositivos</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>Umbrales Recomendados para Redes Empresariales</h3>
+    <div class="table-responsive">
+        <table class="tech-table">
+            <thead>
+                <tr>
+                    <th>Métrica</th>
+                    <th>Óptimo</th>
+                    <th>Aceptable</th>
+                    <th>Crítico</th>
+                    <th>Herramienta de Medición</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>RSSI</td>
+                    <td>> -55 dBm</td>
+                    <td>-55 a -70 dBm</td>
+                    <td>< -70 dBm</td>
+                    <td>Ekahau, NetSpot, inSSIDer</td>
+                </tr>
+                <tr>
+                    <td>SNR</td>
+                    <td>> 30 dB</td>
+                    <td>20-30 dB</td>
+                    <td>< 20 dB</td>
+                    <td>Wireshark, WiFi Analyzer</td>
+                </tr>
+                <tr>
+                    <td>Pérdida de Paquetes</td>
+                    <td>< 1%</td>
+                    <td>1-3%</td>
+                    <td>> 3%</td>
+                    <td>Ping, iPerf</td>
+                </tr>
+                <tr>
+                    <td>Interferencia Co-Canal</td>
+                    <td>< 5%</td>
+                    <td>5-15%</td>
+                    <td>> 15%</td>
+                    <td>Ekahau, Chanalyzer</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section id="repeaters">
+    <h2><i class="fas fa-retweet"></i> Configuración de Repetidores</h2>
+    
+    <div class="alert alert-warning">
+        <i class="fas fa-exclamation-triangle"></i>
+        <strong>Atención:</strong> Los repetidores reducen el ancho de banda a la mitad. En entornos empresariales, preferir soluciones con cableado backhaul.
+    </div>
+
+    <div class="content-block reverse">
+        <img src="../assets/img/diagrams/wifi-repeater-setup.png" alt="Esquema repetidor WiFi" class="content-image">
+        <div class="content-text">
+            <h3>Mejores Prácticas para Repetidores</h3>
+            <ol>
+                <li>Ubicar en zona con al menos -60 dBm de señal del AP principal</li>
+                <li>Configurar en canal diferente al AP principal (evitar interferencia)</li>
+                <li>Usar el mismo SSID pero diferente canal para roaming asistido</li>
+                <li>Verificar que soporta el mismo estándar WiFi que los APs principales</li>
+                <li>Priorizar bandas de 5GHz para mayor velocidad</li>
+            </ol>
+        </div>
+    </div>
+
+    <h3>Comandos para Diagnóstico WiFi en Linux</h3>
+    <pre class="code-block"><code class="language-bash"># Escanear redes WiFi disponibles
+sudo iwlist wlan0 scan
+
+# Ver información de la conexión actual
+iwconfig wlan0
+
+# Test de velocidad (requiere iperf3 en ambos extremos)
+iperf3 -c [server_ip] -t 20 -i 2
+
+# Medir potencia de señal en tiempo real
+watch -n 1 "iwconfig wlan0 | grep -i quality"
+
+# Analizar espectro WiFi (requiere tarjeta compatible)
+sudo horst -i wlan0</code></pre>
+</section>
