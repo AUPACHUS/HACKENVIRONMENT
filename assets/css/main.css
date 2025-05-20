@@ -531,6 +531,185 @@ a:hover {
     background: #252525;
 }
 
+/* Estilos específicos para Wireshark */
+.hero-subpage {
+    background: url('../img/wireshark-bg.jpg') no-repeat center center/cover;
+}
+
+.intro-with-image {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.intro-with-image img {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    max-width: 50%;
+}
+
+.download-box {
+    background: rgba(33, 150, 243, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.download-box span {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.step {
+    background: var(--light);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.dark-mode .step {
+    background: #1e1e1e;
+}
+
+.step img {
+    max-width: 100%;
+    margin-top: 1rem;
+    border-radius: 4px;
+}
+
+.filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.filter-card {
+    background: var(--light);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+}
+
+.dark-mode .filter-card {
+    background: #1e1e1e;
+}
+
+.filter-card ul {
+    margin: 0.5rem 0;
+    padding-left: 1.2rem;
+}
+
+.filter-card code {
+    background: #f5f5f5;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+}
+
+.dark-mode .filter-card code {
+    background: #333;
+}
+
+.protocol-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+}
+
+.proto-tab {
+    padding: 0.5rem 1rem;
+    background: var(--light);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .proto-tab {
+    background: #333;
+}
+
+.proto-tab.active {
+    background: var(--primary);
+    color: white;
+}
+
+.proto-content {
+    display: none;
+    padding: 1rem;
+    background: var(--light);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.dark-mode .proto-content {
+    background: #1e1e1e;
+}
+
+.proto-content.active {
+    display: block;
+}
+
+.attack-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.attack-card {
+    background: var(--light);
+    padding: 1rem;
+    border-radius: 8px;
+    border-top: 3px solid var(--danger);
+}
+
+.dark-mode .attack-card {
+    background: #1e1e1e;
+}
+
+.resources {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.resource-card {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .resource-card {
+    background: #1e1e1e;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.resource-card i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
 @media (max-width: 992px) {
     .nav-menu {
         position: fixed;
@@ -580,5 +759,13 @@ a:hover {
         float: none;
         width: 100%;
         margin: 0 0 1.5rem 0;
+    }
+
+    .intro-with-image {
+        flex-direction: column;
+    }
+    
+    .intro-with-image img {
+        max-width: 100%;
     }
 }

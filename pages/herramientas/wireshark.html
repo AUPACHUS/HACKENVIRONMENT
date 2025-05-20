@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireshark - Análisis de Red | HackEnvironment</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Guía definitiva para analizar tráfico de red con Wireshark: captura de paquetes, filtrado avanzado y detección de anomalías.">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="brand-logo">
+                <img src="../../assets/img/logos/hackenvironment-logo.png" alt="HackEnvironment Logo">
+                <span>HackEnvironment</span>
+            </a>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-tools"></i> Herramientas <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="wireshark.html" class="active">Wireshark</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+                </li>
+                <li><a href="../guias/pentesting.html"><i class="fas fa-book"></i> Guías</a></li>
+            </ul>
+            <div class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Encabezado -->
+    <header class="hero-subpage">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1><i class="fas fa-network-wired"></i> Wireshark</h1>
+            <p class="subtitle">Analizador de protocolos para inspección profunda de tráfico de red</p>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="container">
+        <!-- Introducción -->
+        <section class="section">
+            <div class="intro-with-image">
+                <div>
+                    <h2><i class="fas fa-info-circle"></i> ¿Qué es Wireshark?</h2>
+                    <p>Wireshark es un <strong>analizador de protocolos de red</strong> que permite:</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Capturar tráfico en tiempo real</li>
+                        <li><i class="fas fa-check"></i> Analizar más de 2,000 protocolos</li>
+                        <li><i class="fas fa-check"></i> Detectar anomalías y ataques</li>
+                    </ul>
+                    <div class="download-box">
+                        <a href="https://www.wireshark.org/download.html" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-download"></i> Descargar Wireshark
+                        </a>
+                        <span>Versión actual: 4.0.8</span>
+                    </div>
+                </div>
+                <img src="../../assets/img/screenshots/wireshark-ui.png" alt="Interfaz de Wireshark">
+            </div>
+        </section>
+
+        <!-- Captura de tráfico -->
+        <section class="section">
+            <h2><i class="fas fa-filter"></i> Captura Básica de Paquetes</h2>
+            
+            <div class="grid-2">
+                <div class="step">
+                    <h3><i class="fas fa-play"></i> Iniciar Captura</h3>
+                    <ol>
+                        <li>Seleccionar interfaz de red (ej: eth0, wlan0)</li>
+                        <li>Hacer clic en <strong>Iniciar</strong> (botón azul)</li>
+                        <li>Usar <strong>Ctrl+E</strong> para detener</li>
+                    </ol>
+                    <img src="../../assets/img/screenshots/wireshark-capture.png" alt="Selección de interfaz">
+                </div>
+                
+                <div class="step">
+                    <h3><i class="fas fa-sliders-h"></i> Opciones Avanzadas</h3>
+                    <ul>
+                        <li><strong>Promiscuo:</strong> Captura todo el tráfico en la red</li>
+                        <li><strong>Buffer:</strong> Tamaño máximo de captura (MB)</li>
+                        <li><strong>Filtros de captura:</strong> Ej: <code>host 192.168.1.100</code></li>
+                    </ul>
+                    <pre><code class="language-bash"># Captura desde terminal (tshark)
+tshark -i eth0 -w captura.pcap -f "port 80"</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filtrado avanzado -->
+        <section class="section">
+            <h2><i class="fas fa-search"></i> Filtrado Avanzado</h2>
+            
+            <div class="filters-grid">
+                <div class="filter-card">
+                    <h3>Filtros Básicos</h3>
+                    <ul>
+                        <li><code>ip.addr == 192.168.1.1</code></li>
+                        <li><code>tcp.port == 443</code></li>
+                        <li><code>http.request.method == "GET"</code></li>
+                        <li><code>dns.qry.name contains "google"</code></li>
+                    </ul>
+                </div>
+                
+                <div class="filter-card">
+                    <h3>Operadores Lógicos</h3>
+                    <ul>
+                        <li><code>and</code> (&&)</li>
+                        <li><code>or</code> (||)</li>
+                        <li><code>not</code> (!)</li>
+                    </ul>
+                    <pre><code class="language-text">ip.src == 192.168.1.100 and tcp.flags.syn == 1</code></pre>
+                </div>
+                
+                <div class="filter-card">
+                    <h3>Filtros Avanzados</h3>
+                    <ul>
+                        <li><code>tcp.analysis.retransmission</code></li>
+                        <li><code>ssl.handshake.type == 1</code></li>
+                        <li><code>icmp.type == 8</code> (ping requests)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="alert alert-info">
+                <i class="fas fa-lightbulb"></i>
+                <strong>Tip:</strong> Usa la barra de filtro y presiona <kbd>Enter</kbd> para aplicar. Los filtros válidos se muestran en verde.
+            </div>
+        </section>
+
+        <!-- Análisis de protocolos -->
+        <section class="section">
+            <h2><i class="fas fa-layer-group"></i> Análisis por Protocolos</h2>
+            
+            <div class="protocol-tabs">
+                <button class="proto-tab active" data-tab="http">HTTP/HTTPS</button>
+                <button class="proto-tab" data-tab="dns">DNS</button>
+                <button class="proto-tab" data-tab="tcp">TCP</button>
+                <button class="proto-tab" data-tab="icmp">ICMP</button>
+            </div>
+            
+            <div class="proto-content active" id="http">
+                <h3>Análisis de Tráfico Web</h3>
+                <div class="grid-2">
+                    <div>
+                        <p><strong>Filtros útiles:</strong></p>
+                        <ul>
+                            <li><code>http.request</code></li>
+                            <li><code>http.response.code == 200</code></li>
+                            <li><code>http.host contains "facebook"</code></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p><strong>Extraer archivos:</strong></p>
+                        <ol>
+                            <li>Menú <strong>File > Export Objects > HTTP</strong></li>
+                            <li>Filtrar por tipo (ej: images)</li>
+                            <li>Guardar archivos recuperados</li>
+                        </ol>
+                    </div>
+                </div>
+                <img src="../../assets/img/screenshots/wireshark-http.png" alt="Análisis HTTP">
+            </div>
+            
+            <div class="proto-content" id="dns">
+                <h3>Análisis de Consultas DNS</h3>
+                <pre><code class="language-text">dns.qry.name contains "google"
+dns.flags.response == 1
+dns.resp.type == 5  # Respuestas CNAME</code></pre>
+                <p><strong>Detectar exfiltración DNS:</strong></p>
+                <pre><code class="language-text">dns.qry.name matches "[a-z0-9]{32}\.evil\.com"</code></pre>
+            </div>
+            
+            <div class="proto-content" id="tcp">
+                <h3>Análisis de Conexiones TCP</h3>
+                <ul>
+                    <li><strong>Handshake SYN/ACK:</strong> <code>tcp.flags.syn == 1</code></li>
+                    <li><strong>Retransmisiones:</strong> <code>tcp.analysis.retransmission</code></li>
+                    <li><strong>Window Size:</strong> <code>tcp.window_size < 1024</code></li>
+                </ul>
+                <img src="../../assets/img/screenshots/wireshark-tcp.png" alt="Flujo TCP">
+            </div>
+            
+            <div class="proto-content" id="icmp">
+                <h3>Detección de Ping Sweeps</h3>
+                <pre><code class="language-text">icmp.type == 8 and frame.count > 50  # Muchos pings desde una IP
+icmp.code == 0  # Echo request</code></pre>
+                <p><strong>Ejemplo de ataque:</strong></p>
+                <pre><code class="language-text">icmp.type == 8 and ip.src == 192.168.1.100 and icmp.seq le 10</code></pre>
+            </div>
+        </section>
+
+        <!-- Casos prácticos -->
+        <section class="section">
+            <h2><i class="fas fa-user-secret"></i> Detección de Ataques</h2>
+            
+            <div class="attack-cards">
+                <div class="attack-card">
+                    <h3><i class="fas fa-sync-alt"></i> ARP Spoofing</h3>
+                    <p><strong>Filtro:</strong> <code>arp.opcode == 2</code></p>
+                    <p>Buscar múltiples respuestas ARP desde una misma IP:</p>
+                    <pre><code class="language-text">arp.dst.hw_mac == ff:ff:ff:ff:ff:ff</code></pre>
+                </div>
+                
+                <div class="attack-card">
+                    <h3><i class="fas fa-broadcast-tower"></i> Port Scanning</h3>
+                    <p><strong>Filtros:</strong></p>
+                    <ul>
+                        <li><code>tcp.flags.syn == 1 and tcp.flags.ack == 0</code></li>
+                        <li><code>ip.src == 192.168.1.100 and tcp.dstport >= 1 and tcp.dstport <= 1024</code></li>
+                    </ul>
+                </div>
+                
+                <div class="attack-card">
+                    <h3><i class="fas fa-lock"></i> Bruteforce SSH</h3>
+                    <p><strong>Filtro:</strong></p>
+                    <pre><code class="language-text">tcp.port == 22 and tcp.flags.push == 1
+frame.time_delta < 1  # Múltiples intentos rápidos</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recursos adicionales -->
+        <section class="section">
+            <h2><i class="fas fa-book"></i> Recursos Adicionales</h2>
+            <div class="resources">
+                <a href="https://wiki.wireshark.org/SampleCaptures" class="resource-card" target="_blank">
+                    <i class="fas fa-database"></i>
+                    <h3>Capturas de Ejemplo</h3>
+                    <p>Archivos .pcap para practicar</p>
+                </a>
+                <a href="https://www.wireshark.org/docs/wsug_html_chunked/" class="resource-card" target="_blank">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Guía Oficial</h3>
+                    <p>Documentación completa</p>
+                </a>
+                <a href="https://www.cloudshark.org/" class="resource-card" target="_blank">
+                    <i class="fas fa-cloud"></i>
+                    <h3>CloudShark</h3>
+                    <p>Analizar .pcap en la nube</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="../../assets/img/logos/hackenvironment-logo-white.png" alt="HackEnvironment Logo">
+                <span>HackEnvironment</span>
+            </div>
+            <p class="footer-disclaimer">Este contenido es solo para fines educativos en entornos autorizados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/app.js"></script>
+    <script>
+        // Tabs de protocolos
+        document.querySelectorAll('.proto-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                document.querySelectorAll('.proto-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.querySelectorAll('.proto-tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                document.getElementById(tabId).classList.add('active');
+                tab.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
