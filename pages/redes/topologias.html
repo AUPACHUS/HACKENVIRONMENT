@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topologías de Red | HackEnvironment</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Guía completa de topologías de red: física, lógica, ventajas y desventajas de cada configuración para administradores de redes.">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="brand-logo">
+                <img src="../../assets/img/logos/hackenvironment-logo.png" alt="HackEnvironment Logo">
+                <span>HackEnvironment</span>
+            </a>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-tools"></i> Herramientas <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../herramientas/nmap.html">Nmap</a></li>
+                        <li><a href="../herramientas/wireshark.html">Wireshark</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-network-wired"></i> Redes <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="wifi-advanced.html">WiFi Avanzado</a></li>
+                        <li><a href="tcp-ip.html">TCP/IP</a></li>
+                        <li><a href="topologias.html" class="active">Topologías</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Encabezado -->
+    <header class="hero-subpage">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1><i class="fas fa-project-diagram"></i> Topologías de Red</h1>
+            <p class="subtitle">Configuraciones físicas y lógicas para implementación de redes</p>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="container">
+        <!-- Introducción -->
+        <section class="section">
+            <h2><i class="fas fa-info-circle"></i> ¿Qué es una Topología de Red?</h2>
+            <p>La topología de red define cómo se <strong>interconectan los dispositivos</strong> en una red, tanto física como lógicamente. Determina:</p>
+            <ul>
+                <li><i class="fas fa-check"></i> Flujo de datos</li>
+                <li><i class="fas fa-check"></i> Escalabilidad</li>
+                <li><i class="fas fa-check"></i> Tolerancia a fallos</li>
+                <li><i class="fas fa-check"></i> Costo de implementación</li>
+            </ul>
+            <div class="alert alert-info">
+                <i class="fas fa-lightbulb"></i>
+                <strong>Tip:</strong> Las redes modernas suelen combinar múltiples topologías (híbridas).
+            </div>
+        </section>
+
+        <!-- Topologías físicas -->
+        <section class="section">
+            <h2><i class="fas fa-ethernet"></i> Topologías Físicas</h2>
+            
+            <div class="topology-tabs">
+                <button class="topo-tab active" data-tab="star">Estrella</button>
+                <button class="topo-tab" data-tab="bus">Bus</button>
+                <button class="topo-tab" data-tab="ring">Anillo</button>
+                <button class="topo-tab" data-tab="mesh">Malla</button>
+                <button class="topo-tab" data-tab="hybrid">Híbrida</button>
+            </div>
+            
+            <div class="topo-content active" id="star">
+                <div class="topo-detail">
+                    <img src="../../assets/img/diagrams/topology-star.png" alt="Topología Estrella">
+                    <div>
+                        <h3>Estrella</h3>
+                        <p><strong>Dispositivo central:</strong> Switch o Hub</p>
+                        <ul>
+                            <li><i class="fas fa-plus-circle"></i> <strong>Ventajas:</strong> Fácil administración, fallos localizados</li>
+                            <li><i class="fas fa-minus-circle"></i> <strong>Desventajas:</strong> Dependencia del nodo central</li>
+                            <li><i class="fas fa-wifi"></i> <strong>Usos:</strong> Redes LAN modernas, WiFi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topo-content" id="bus">
+                <div class="topo-detail">
+                    <img src="../../assets/img/diagrams/topology-bus.png" alt="Topología Bus">
+                    <div>
+                        <h3>Bus</h3>
+                        <p><strong>Cable backbone:</strong> Coaxial (10Base2)</p>
+                        <ul>
+                            <li><i class="fas fa-plus-circle"></i> <strong>Ventajas:</strong> Bajo costo, simple instalación</li>
+                            <li><i class="fas fa-minus-circle"></i> <strong>Desventajas:</strong> Un fallo afecta toda la red, colisiones</li>
+                            <li><i class="fas fa-history"></i> <strong>Usos:</strong> Redes antiguas, industriales</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topo-content" id="ring">
+                <div class="topo-detail">
+                    <img src="../../assets/img/diagrams/topology-ring.png" alt="Topología Anillo">
+                    <div>
+                        <h3>Anillo</h3>
+                        <p><strong>Flujo unidireccional:</strong> Token passing</p>
+                        <ul>
+                            <li><i class="fas fa-plus-circle"></i> <strong>Ventajas:</strong> Sin colisiones, rendimiento predecible</li>
+                            <li><i class="fas fa-minus-circle"></i> <strong>Desventajas:</strong> Un fallo interrumpe toda la red</li>
+                            <li><i class="fas fa-building"></i> <strong>Usos:</strong> FDDI, redes MAN</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topo-content" id="mesh">
+                <div class="topo-detail">
+                    <img src="../../assets/img/diagrams/topology-mesh.png" alt="Topología Malla">
+                    <div>
+                        <h3>Malla</h3>
+                        <p><strong>Interconexión total/parcial</strong></p>
+                        <ul>
+                            <li><i class="fas fa-plus-circle"></i> <strong>Ventajas:</strong> Redundancia, alta disponibilidad</li>
+                            <li><i class="fas fa-minus-circle"></i> <strong>Desventajas:</strong> Alto costo, complejidad</li>
+                            <li><i class="fas fa-cloud"></i> <strong>Usos:</strong> Datacenters, redes WAN</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topo-content" id="hybrid">
+                <div class="topo-detail">
+                    <img src="../../assets/img/diagrams/topology-hybrid.png" alt="Topología Híbrida">
+                    <div>
+                        <h3>Híbrida</h3>
+                        <p><strong>Combinación de topologías</strong></p>
+                        <ul>
+                            <li><i class="fas fa-plus-circle"></i> <strong>Ventajas:</strong> Flexibilidad, optimización</li>
+                            <li><i class="fas fa-minus-circle"></i> <strong>Desventajas:</strong> Diseño complejo</li>
+                            <li><i class="fas fa-city"></i> <strong>Usos:</strong> Redes empresariales modernas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topologías lógicas -->
+        <section class="section">
+            <h2><i class="fas fa-code-branch"></i> Topologías Lógicas</h2>
+            
+            <div class="grid-2">
+                <div class="logic-card">
+                    <h3><i class="fas fa-broadcast-tower"></i> Broadcast</h3>
+                    <ul>
+                        <li>Todos los nodos reciben los datos</li>
+                        <li>Ejemplo: Ethernet (CSMA/CD)</li>
+                        <li>Uso en redes locales</li>
+                    </ul>
+                    <pre><code class="language-text">Switch > flood (broadcast)
+ARP requests</code></pre>
+                </div>
+                
+                <div class="logic-card">
+                    <h3><i class="fas fa-token"></i> Token Passing</h3>
+                    <ul>
+                        <li>Nodo transmite solo con "token"</li>
+                        <li>Ejemplo: Token Ring, FDDI</li>
+                        <li>Sin colisiones</li>
+                    </ul>
+                    <pre><code class="language-text">Nodo A → Token → Nodo B → Datos → Nodo C</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparativa técnica -->
+        <section class="section">
+            <h2><i class="fas fa-balance-scale"></i> Comparativa Técnica</h2>
+            
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Topología</th>
+                            <th>Costo</th>
+                            <th>Escalabilidad</th>
+                            <th>Tolerancia a Fallos</th>
+                            <th>Rendimiento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Estrella</td>
+                            <td>Moderado</td>
+                            <td>Alta</td>
+                            <td>Media (depende del centro)</td>
+                            <td>Alto (full-duplex)</td>
+                        </tr>
+                        <tr>
+                            <td>Bus</td>
+                            <td>Bajo</td>
+                            <td>Baja</td>
+                            <td>Baja</td>
+                            <td>Bajo (colisiones)</td>
+                        </tr>
+                        <tr>
+                            <td>Anillo</td>
+                            <td>Moderado</td>
+                            <td>Media</td>
+                            <td>Baja (sin redundancia)</td>
+                            <td>Moderado</td>
+                        </tr>
+                        <tr>
+                            <td>Malla</td>
+                            <td>Alto</td>
+                            <td>Alta</td>
+                            <td>Muy Alta</td>
+                            <td>Óptimo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Casos de uso -->
+        <section class="section">
+            <h2><i class="fas fa-building"></i> Casos de Uso Reales</h2>
+            
+            <div class="use-case-grid">
+                <div class="case-card">
+                    <h3><i class="fas fa-home"></i> Pequeña Oficina (SOHO)</h3>
+                    <p><strong>Topología:</strong> Estrella</p>
+                    <p><strong>Dispositivos:</strong> 1 Switch + Access Point WiFi</p>
+                    <p><strong>Ventaja:</strong> Simpleza y bajo mantenimiento</p>
+                </div>
+                
+                <div class="case-card">
+                    <h3><i class="fas fa-university"></i> Campus Universitario</h3>
+                    <p><strong>Topología:</strong> Híbrida (Estrella + Malla)</p>
+                    <p><strong>Dispositivos:</strong> Múltiples switches enlazados</p>
+                    <p><strong>Ventaja:</strong> Balance entre costo y redundancia</p>
+                </div>
+                
+                <div class="case-card">
+                    <h3><i class="fas fa-server"></i> Data Center</h3>
+                    <p><strong>Topología:</strong> Malla completa</p>
+                    <p><strong>Tecnología:</strong> Spine-and-Leaf</p>
+                    <p><strong>Ventaja:</strong> Máxima disponibilidad</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Herramientas de diseño -->
+        <section class="section">
+            <h2><i class="fas fa-tools"></i> Herramientas de Diseño</h2>
+            
+            <div class="tools-grid">
+                <a href="https://www.draw.io/" class="tool-card" target="_blank">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Diagrams.net (draw.io)</h3>
+                    <p>Gratuito, integrado con Google Drive</p>
+                </a>
+                
+                <a href="https://www.microsoft.com/en-us/microsoft-365/visio/" class="tool-card" target="_blank">
+                    <i class="fas fa-diagram-project"></i>
+                    <h3>Microsoft Visio</h3>
+                    <p>Profesional, plantillas prediseñadas</p>
+                </a>
+                
+                <a href="https://www.cisco.com/c/en/us/products/cloud-systems-management/network-automation/index.html" class="tool-card" target="_blank">
+                    <i class="fab fa-cisco"></i>
+                    <h3>Cisco Packet Tracer</h3>
+                    <p>Simulación de redes reales</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="../../assets/img/logos/hackenvironment-logo-white.png" alt="HackEnvironment Logo">
+                <span>HackEnvironment</span>
+            </div>
+            <p class="footer-disclaimer">Este contenido es solo para fines educativos.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/app.js"></script>
+    <script>
+        // Tabs de topologías
+        document.querySelectorAll('.topo-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                document.querySelectorAll('.topo-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.querySelectorAll('.topo-tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                document.getElementById(tabId).classList.add('active');
+                tab.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

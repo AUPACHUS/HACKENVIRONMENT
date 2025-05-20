@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo TCP/IP | HackEnvironment</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Guía completa del protocolo TCP/IP: capas, funcionamiento, direccionamiento y su importancia en ciberseguridad.">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="brand-logo">
+                <img src="../../assets/img/logos/hackenvironment-logo.png" alt="HackEnvironment Logo">
+                <span>HackEnvironment</span>
+            </a>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-tools"></i> Herramientas <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../herramientas/nmap.html">Nmap</a></li>
+                        <li><a href="../herramientas/wireshark.html">Wireshark</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-network-wired"></i> Redes <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="wifi-advanced.html">WiFi Avanzado</a></li>
+                        <li><a href="tcp-ip.html" class="active">TCP/IP</a></li>
+                        <li><a href="topologias.html">Topologías</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Encabezado -->
+    <header class="hero-subpage">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1><i class="fas fa-server"></i> Protocolo TCP/IP</h1>
+            <p class="subtitle">El lenguaje fundamental de Internet y redes modernas</p>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="container">
+        <!-- Introducción -->
+        <section class="section">
+            <div class="intro-with-image">
+                <div>
+                    <h2><i class="fas fa-info-circle"></i> ¿Qué es TCP/IP?</h2>
+                    <p>TCP/IP es el <strong>conjunto de protocolos</strong> que permite la comunicación en Internet y redes locales, compuesto por dos protocolos principales:</p>
+                    <ul>
+                        <li><strong>TCP (Transmission Control Protocol):</strong> Orientado a conexión, garantiza entrega confiable de datos.</li>
+                        <li><strong>IP (Internet Protocol):</strong> Encargado del direccionamiento y routing de paquetes.</li>
+                    </ul>
+                </div>
+                <img src="../../assets/img/diagrams/tcp-ip-stack.png" alt="Modelo TCP/IP">
+            </div>
+        </section>
+
+        <!-- Modelo de capas -->
+        <section class="section">
+            <h2><i class="fas fa-layer-group"></i> Modelo de 4 Capas</h2>
+            
+            <div class="layers-grid">
+                <div class="layer-card">
+                    <div class="layer-number">4</div>
+                    <h3>Aplicación</h3>
+                    <ul>
+                        <li>HTTP, FTP, DNS, SMTP</li>
+                        <li>Interfaz para aplicaciones</li>
+                    </ul>
+                </div>
+                
+                <div class="layer-card">
+                    <div class="layer-number">3</div>
+                    <h3>Transporte</h3>
+                    <ul>
+                        <li>TCP, UDP</li>
+                        <li>Control de flujo y errores</li>
+                    </ul>
+                </div>
+                
+                <div class="layer-card">
+                    <div class="layer-number">2</div>
+                    <h3>Internet</h3>
+                    <ul>
+                        <li>IP, ICMP, ARP</li>
+                        <li>Enrutamiento de paquetes</li>
+                    </ul>
+                </div>
+                
+                <div class="layer-card">
+                    <div class="layer-number">1</div>
+                    <h3>Enlace</h3>
+                    <ul>
+                        <li>Ethernet, WiFi, PPP</li>
+                        <li>Transmisión física</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="comparison-table">
+                <h3>Comparación con Modelo OSI</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>TCP/IP</th>
+                            <th>OSI</th>
+                            <th>Función</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Aplicación</td>
+                            <td>Aplicación, Presentación, Sesión</td>
+                            <td>Interacción usuario-red</td>
+                        </tr>
+                        <tr>
+                            <td>Transporte</td>
+                            <td>Transporte</td>
+                            <td>Comunicación extremo a extremo</td>
+                        </tr>
+                        <tr>
+                            <td>Internet</td>
+                            <td>Red</td>
+                            <td>Direccionamiento lógico</td>
+                        </tr>
+                        <tr>
+                            <td>Enlace</td>
+                            <td>Enlace de datos, Física</td>
+                            <td>Transmisión de bits</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Funcionamiento de TCP -->
+        <section class="section">
+            <h2><i class="fas fa-exchange-alt"></i> Funcionamiento de TCP</h2>
+            
+            <div class="operation-steps">
+                <div class="step">
+                    <h3><i class="fas fa-handshake"></i> Three-Way Handshake</h3>
+                    <p>Establecimiento de conexión:</p>
+                    <ol>
+                        <li><strong>SYN:</strong> Cliente envía número de secuencia inicial</li>
+                        <li><strong>SYN-ACK:</strong> Servidor reconoce y envía su número</li>
+                        <li><strong>ACK:</strong> Cliente confirma la conexión</li>
+                    </ol>
+                    <img src="../../assets/img/diagrams/tcp-handshake.png" alt="Three-Way Handshake">
+                </div>
+                
+                <div class="step">
+                    <h3><i class="fas fa-shield-alt"></i> Control de Flujo y Errores</h3>
+                    <ul>
+                        <li><strong>Números de secuencia:</strong> Ordenan los segmentos</li>
+                        <li><strong>ACKs:</strong> Confirmación de recepción</li>
+                        <li><strong>Ventana deslizante:</strong> Regula velocidad de transmisión</li>
+                    </ul>
+                    <pre><code class="language-text"># Ejemplo en Wireshark
+tcp.flags.syn == 1       # Filtra paquetes SYN
+tcp.analysis.retransmission  # Retransmisiones</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Direccionamiento IP -->
+        <section class="section">
+            <h2><i class="fas fa-map-marker-alt"></i> Direccionamiento IP</h2>
+            
+            <div class="ip-address-types">
+                <div class="type-card">
+                    <h3>IPv4</h3>
+                    <p>32 bits (4 octetos): <code>192.168.1.1</code></p>
+                    <ul>
+                        <li><strong>Clases:</strong> A, B, C (D para multicast, E experimental)</li>
+                        <li><strong>Privadas:</strong> 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16</li>
+                    </ul>
+                </div>
+                
+                <div class="type-card">
+                    <h3>IPv6</h3>
+                    <p>128 bits: <code>2001:0db8:85a3::8a2e:0370:7334</code></p>
+                    <ul>
+                        <li><strong>Características:</strong> Mayor espacio, autoconfiguración</li>
+                        <li><strong>Tipos:</strong> Unicast, Multicast, Anycast</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="subnetting-section">
+                <h3><i class="fas fa-calculator"></i> Subnetting Práctico</h3>
+                <div class="subnet-example">
+                    <p><strong>Ejemplo:</strong> Dividir <code>192.168.1.0/24</code> en 4 subredes</p>
+                    <pre><code class="language-text">Máscara original: 255.255.255.0 (/24)
+Nueva máscara: 255.255.255.192 (/26)
+
+Subredes:
+1. 192.168.1.0 - 192.168.1.63
+2. 192.168.1.64 - 192.168.1.127
+3. 192.168.1.128 - 192.168.1.191
+4. 192.168.1.192 - 192.168.1.255</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seguridad en TCP/IP -->
+        <section class="section">
+            <h2><i class="fas fa-lock"></i> Seguridad y Vulnerabilidades</h2>
+            
+            <div class="security-grid">
+                <div class="threat-card">
+                    <h3><i class="fas fa-sync-alt"></i> TCP Hijacking</h3>
+                    <p>Secuestro de sesiones TCP mediante predicción de números de secuencia.</p>
+                    <p><strong>Mitigación:</strong> Uso de SEQ aleatorios (RFC 1948)</p>
+                </div>
+                
+                <div class="threat-card">
+                    <h3><i class="fas fa-network-wired"></i> IP Spoofing</h3>
+                    <p>Falsificación de direcciones IP de origen.</p>
+                    <p><strong>Mitigación:</strong> Filtrado ingress/egress, BCP38</p>
+                </div>
+                
+                <div class="threat-card">
+                    <h3><i class="fas fa-bomb"></i> SYN Flood</h3>
+                    <p>Ataque DDoS que agota recursos con solicitudes SYN.</p>
+                    <p><strong>Mitigación:</strong> SYN cookies, límite de conexiones</p>
+                </div>
+            </div>
+            
+            <div class="protection-card">
+                <h3><i class="fas fa-shield-virus"></i> Protocolos de Seguridad</h3>
+                <ul>
+                    <li><strong>IPSec:</strong> Cifrado a nivel de red</li>
+                    <li><strong>TLS/SSL:</strong> Seguridad en capa de aplicación (HTTPS)</li>
+                    <li><strong>DNSSEC:</strong> Protección contra spoofing DNS</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Herramientas de análisis -->
+        <section class="section">
+            <h2><i class="fas fa-tools"></i> Herramientas de Diagnóstico</h2>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3><i class="fas fa-terminal"></i> Comandos Básicos</h3>
+                    <pre><code class="language-bash"># Ver configuración IP
+ipconfig (Windows) / ifconfig (Linux)
+
+# Testear conectividad
+ping 8.8.8.8
+traceroute google.com
+
+# Analizar puertos abiertos
+netstat -tulnp
+nmap -sT localhost</code></pre>
+                </div>
+                
+                <div class="tool-card">
+                    <h3><i class="fas fa-network-wired"></i> Wireshark Filters</h3>
+                    <pre><code class="language-text"># Filtrar tráfico TCP/IP
+ip.addr == 192.168.1.1
+tcp.port == 80
+tcp.flags.syn == 1
+
+# Análisis de rendimiento
+tcp.analysis.retransmission
+tcp.window_size < 1024</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contenido Técnico Destacado -->
+        <section class="section">
+            <h2><i class="fas fa-star"></i> Contenido Técnico Destacado</h2>
+
+            <h3>1. Encapsulación TCP/IP</h3>
+            <div class="code-block">
+                <pre><code class="language-text">[Datos de Aplicación]
+      ↓
+[TCP Header] + [Datos]  → Segmento
+      ↓
+[IP Header] + [Segmento] → Paquete
+      ↓
+[Frame Header] + [Paquete] → Trama Ethernet/WiFi
+                </code></pre>
+            </div>
+
+            <h3>2. Campos Clave en Headers</h3>
+            <div class="code-block">
+                <pre><code class="language-text">TCP Header:
+- Puertos Origen/Destino (16 bits cada uno)
+- Números de Secuencia/Acknowledgment (32 bits)
+- Flags (SYN, ACK, FIN, RST)
+- Window Size (Control de flujo)
+
+IP Header:
+- Versión (IPv4/IPv6)
+- TTL (Time To Live)
+- Protocolo (TCP=6, UDP=17)
+- Direcciones IP Origen/Destino
+                </code></pre>
+            </div>
+
+            <h3>3. Puertos Comunes</h3>
+            <div class="code-block" style="overflow-x:auto;">
+                <table style="width:100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="border-bottom:1px solid #ccc; padding: 0.5rem;">Puerto</th>
+                            <th style="border-bottom:1px solid #ccc; padding: 0.5rem;">Protocolo</th>
+                            <th style="border-bottom:1px solid #ccc; padding: 0.5rem;">Uso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 0.5rem;">20/21</td>
+                            <td style="padding: 0.5rem;">FTP</td>
+                            <td style="padding: 0.5rem;">Transferencia de archivos</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.5rem;">22</td>
+                            <td style="padding: 0.5rem;">SSH</td>
+                            <td style="padding: 0.5rem;">Acceso remoto seguro</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.5rem;">80</td>
+                            <td style="padding: 0.5rem;">HTTP</td>
+                            <td style="padding: 0.5rem;">Tráfico web</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.5rem;">443</td>
+                            <td style="padding: 0.5rem;">HTTPS</td>
+                            <td style="padding: 0.5rem;">Web seguro</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.5rem;">3389</td>
+                            <td style="padding: 0.5rem;">RDP</td>
+                            <td style="padding: 0.5rem;">Escritorio remoto</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="../../assets/img/logos/hackenvironment-logo-white.png" alt="HackEnvironment Logo">
+                <span>HackEnvironment</span>
+            </div>
+            <p class="footer-disclaimer">Este contenido es solo para fines educativos.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/app.js"></script>
+</body>
+</html>

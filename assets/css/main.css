@@ -915,3 +915,358 @@ a:hover {
     color: var(--primary);
     margin-bottom: 1rem;
 }
+
+/* Estilos específicos para tcp-ip.html */
+.hero-subpage {
+    background: url('../img/network-bg-blue.jpg') no-repeat center center/cover;
+}
+
+.intro-with-image {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.intro-with-image img {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    max-width: 50%;
+}
+
+.layers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.layer-card {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.dark-mode .layer-card {
+    background: #1e1e1e;
+}
+
+.layer-card:hover {
+    transform: translateY(-5px);
+}
+
+.layer-number {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 1rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.comparison-table {
+    margin: 2rem 0;
+    overflow-x: auto;
+}
+
+.comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comparison-table th, .comparison-table td {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.dark-mode .comparison-table th,
+.dark-mode .comparison-table td {
+    border-color: #444;
+}
+
+.comparison-table th {
+    background-color: var(--primary);
+    color: white;
+}
+
+.operation-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.step {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.dark-mode .step {
+    background: #1e1e1e;
+}
+
+.step img {
+    max-width: 100%;
+    margin-top: 1rem;
+    border-radius: 4px;
+}
+
+.ip-address-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.type-card {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+}
+
+.dark-mode .type-card {
+    background: #1e1e1e;
+}
+
+.subnetting-section {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.dark-mode .subnetting-section {
+    background: #1e1e1e;
+}
+
+.subnet-example {
+    margin-top: 1rem;
+}
+
+.security-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.threat-card {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-top: 3px solid var(--danger);
+}
+
+.dark-mode .threat-card {
+    background: #1e1e1e;
+}
+
+.protection-card {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-top: 3px solid var(--success);
+    margin: 1.5rem 0;
+}
+
+.dark-mode .protection-card {
+    background: #1e1e1e;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.tool-card {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.dark-mode .tool-card {
+    background: #1e1e1e;
+}
+
+/* Estilos específicos para topologias.html */
+.hero-subpage {
+    background: url('../img/network-topology-bg.jpg') no-repeat center center/cover;
+}
+
+.topology-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+}
+
+.topo-tab {
+    padding: 0.5rem 1rem;
+    background: var(--light);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .topo-tab {
+    background: #333;
+}
+
+.topo-tab.active {
+    background: var(--primary);
+    color: white;
+}
+
+.topo-content {
+    display: none;
+    padding: 1rem;
+    background: var(--light);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.dark-mode .topo-content {
+    background: #1e1e1e;
+}
+
+.topo-content.active {
+    display: block;
+}
+
+.topo-detail {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.topo-detail img {
+    width: 40%;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.topo-detail ul {
+    margin: 1rem 0;
+    padding-left: 1.2rem;
+}
+
+.topo-detail li {
+    margin-bottom: 0.5rem;
+}
+
+.fa-plus-circle {
+    color: var(--success);
+}
+
+.fa-minus-circle {
+    color: var(--danger);
+}
+
+.logic-card {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.dark-mode .logic-card {
+    background: #1e1e1e;
+}
+
+.comparison-table {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+}
+
+.comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comparison-table th, .comparison-table td {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.dark-mode .comparison-table th,
+.dark-mode .comparison-table td {
+    border-color: #444;
+}
+
+.comparison-table th {
+    background-color: var(--primary);
+    color: white;
+}
+
+.use-case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.case-card {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-top: 3px solid var(--primary);
+}
+
+.dark-mode .case-card {
+    background: #1e1e1e;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.tool-card {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .tool-card {
+    background: #1e1e1e;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.tool-card i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .topo-detail {
+        flex-direction: column;
+    }
+    
+    .topo-detail img {
+        width: 100%;
+    }
+}
