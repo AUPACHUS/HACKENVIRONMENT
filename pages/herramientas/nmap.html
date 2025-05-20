@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nmap - Escaneo de Red Profesional | HackEnvironment</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Domina Nmap: desde escaneos básicos hasta técnicas avanzadas de enumeración y detección de vulnerabilidades.">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="brand-logo">
+                <img src="../../assets/img/logos/hackenvironment-logo.png" alt="HackEnvironment Logo">
+                <span>HackEnvironment</span>
+            </a>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-tools"></i> Herramientas <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="nmap.html" class="active">Nmap</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+                </li>
+                <li><a href="../guias/pentesting.html"><i class="fas fa-book"></i> Guías</a></li>
+            </ul>
+            <div class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Encabezado -->
+    <header class="hero-subpage">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1><i class="fas fa-network-wired"></i> Nmap</h1>
+            <p class="subtitle">El escáner de red más potente para seguridad ofensiva</p>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="container">
+        <!-- Introducción -->
+        <section class="section">
+            <div class="intro-with-image">
+                <div>
+                    <h2><i class="fas fa-info-circle"></i> ¿Qué es Nmap?</h2>
+                    <p>Nmap (Network Mapper) es una herramienta de código abierto para:</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Descubrimiento de hosts y servicios</li>
+                        <li><i class="fas fa-check"></i> Detección de sistemas operativos</li>
+                        <li><i class="fas fa-check"></i> Identificación de vulnerabilidades</li>
+                    </ul>
+                    <div class="download-box">
+                        <a href="https://nmap.org/download.html" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-download"></i> Descargar Nmap
+                        </a>
+                        <span>Versión actual: 7.94</span>
+                    </div>
+                </div>
+                <img src="../../assets/img/screenshots/nmap-scan.png" alt="Ejemplo de escaneo con Nmap">
+            </div>
+        </section>
+
+        <!-- Escaneos básicos -->
+        <section class="section">
+            <h2><i class="fas fa-search"></i> Escaneos Esenciales</h2>
+            
+            <div class="scan-grid">
+                <div class="scan-card">
+                    <h3><i class="fas fa-bullseye"></i> Descubrimiento</h3>
+                    <pre><code class="language-bash">nmap -sn 192.168.1.0/24</code></pre>
+                    <p>Ping scan para identificar hosts activos.</p>
+                </div>
+                
+                <div class="scan-card">
+                    <h3><i class="fas fa-door-open"></i> Puertos Comunes</h3>
+                    <pre><code class="language-bash">nmap -sV 192.168.1.100</code></pre>
+                    <p>Escaneo de versión en los 1,000 puertos más comunes.</p>
+                </div>
+                
+                <div class="scan-card">
+                    <h3><i class="fas fa-list"></i> Todos los Puertos</h3>
+                    <pre><code class="language-bash">nmap -p- 192.168.1.100</code></pre>
+                    <p>Escaneo completo (1-65535). Tarda más pero es exhaustivo.</p>
+                </div>
+            </div>
+            
+            <div class="alert alert-info">
+                <i class="fas fa-lightbulb"></i>
+                <strong>Tip:</strong> Usa <code>-T4</code> para velocidad agresiva o <code>-T2</code> para escaneos sigilosos.
+            </div>
+        </section>
+
+        <!-- Técnicas avanzadas -->
+        <section class="section">
+            <h2><i class="fas fa-magic"></i> Técnicas Avanzadas</h2>
+            
+            <div class="advanced-tabs">
+                <button class="adv-tab active" data-tab="stealth">Escaneos Sigilosos</button>
+                <button class="adv-tab" data-tab="os">Detección de OS</button>
+                <button class="adv-tab" data-tab="scripts">NSE Scripts</button>
+                <button class="adv-tab" data-tab="vuln">Detección de Vulnerabilidades</button>
+            </div>
+            
+            <div class="adv-content active" id="stealth">
+                <h3><i class="fas fa-user-ninja"></i> Evadir IDS/IPS</h3>
+                <div class="grid-2">
+                    <div>
+                        <p><strong>SYN Stealth Scan:</strong></p>
+                        <pre><code class="language-bash">nmap -sS -Pn -T4 192.168.1.100</code></pre>
+                        <p>No completa la conexión TCP (half-open scan).</p>
+                    </div>
+                    <div>
+                        <p><strong>Fragmentación de Paquetes:</strong></p>
+                        <pre><code class="language-bash">nmap -f -D RND:10 192.168.1.100</code></pre>
+                        <p>Divide los paquetes y usa decoys para evadir firewalls.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="adv-content" id="os">
+                <h3><i class="fas fa-fingerprint"></i> Fingerprinting de Sistemas</h3>
+                <pre><code class="language-bash">nmap -O --osscan-guess 192.168.1.100</code></pre>
+                <p>Detecta el sistema operativo basado en respuestas de red.</p>
+                <img src="../../assets/img/screenshots/nmap-os.png" alt="Ejemplo de detección de OS">
+            </div>
+            
+            <div class="adv-content" id="scripts">
+                <h3><i class="fas fa-code"></i> Uso de Scripts NSE</h3>
+                <pre><code class="language-bash">nmap --script=http-title 192.168.1.100
+nmap --script=ssl-enum-ciphers -p 443 192.168.1.100
+nmap --script=vuln 192.168.1.100</code></pre>
+                <p>Los scripts se encuentran en <code>/usr/share/nmap/scripts/</code></p>
+            </div>
+            
+            <div class="adv-content" id="vuln">
+                <h3><i class="fas fa-bug"></i> Escaneo de Vulnerabilidades</h3>
+                <pre><code class="language-bash">nmap --script vuln -p 80,443,445 192.168.1.100</code></pre>
+                <p>Busca vulnerabilidades conocidas como EternalBlue, Heartbleed, etc.</p>
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>Precaución:</strong> Estos scripts pueden ser intrusivos. Usar solo en redes propias.
+                </div>
+            </div>
+        </section>
+
+        <!-- Output y reportes -->
+        <section class="section">
+            <h2><i class="fas fa-file-export"></i> Formatos de Salida</h2>
+            
+            <div class="output-grid">
+                <div class="output-card">
+                    <h3><i class="fas fa-file-text"></i> Normal</h3>
+                    <pre><code class="language-bash">nmap -oN resultado.txt 192.168.1.100</code></pre>
+                    <p>Formato legible para humanos.</p>
+                </div>
+                
+                <div class="output-card">
+                    <h3><i class="fas fa-file-code"></i> XML</h3>
+                    <pre><code class="language-bash">nmap -oX resultado.xml 192.168.1.100</code></pre>
+                    <p>Para procesamiento automatizado.</p>
+                </div>
+                
+                <div class="output-card">
+                    <h3><i class="fas fa-file-csv"></i> Grepable</h3>
+                    <pre><code class="language-bash">nmap -oG resultado.gnmap 192.168.1.100</code></pre>
+                    <p>Fácil de filtrar con grep/awk.</p>
+                </div>
+            </div>
+            
+            <h3>Visualización con Ndiff</h3>
+            <pre><code class="language-bash">ndiff scan1.xml scan2.xml > cambios.txt</code></pre>
+            <p>Compara dos escaneos para detectar diferencias.</p>
+        </section>
+
+        <!-- Casos prácticos -->
+        <section class="section">
+            <h2><i class="fas fa-laptop-code"></i> Escenarios Reales</h2>
+            
+            <div class="scenario-accordion">
+                <div class="accordion-item">
+                    <button class="accordion-btn">
+                        <i class="fas fa-server"></i> Auditoría de Servidor Web
+                    </button>
+                    <div class="accordion-content">
+                        <pre><code class="language-bash">nmap -p 80,443,8080,8443 --script http-enum,http-vuln* -sV 192.168.1.100 -oX web-scan.xml</code></pre>
+                        <p>Busca:</p>
+                        <ul>
+                            <li>Directorios comunes (<code>http-enum</code>)</li>
+                            <li>Vulnerabilidades conocidas (<code>http-vuln*</code>)</li>
+                            <li>Versiones exactas de servicios (<code>-sV</code>)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-btn">
+                        <i class="fas fa-wifi"></i> Auditoría de Red WiFi
+                    </button>
+                    <div class="accordion-content">
+                        <pre><code class="language-bash">nmap -sn --script broadcast-ping 192.168.1.0/24
+nmap -p 21,22,80,443 --open -oG active-hosts.gnmap 192.168.1.0/24</code></pre>
+                        <p>Identifica:</p>
+                        <ul>
+                            <li>Hosts activos en la red</li>
+                            <li>Servicios expuestos en dispositivos IoT</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cheatsheet descargable -->
+        <section class="section">
+            <h2><i class="fas fa-file-pdf"></i> Cheatsheet de Comandos</h2>
+            <div class="cheatsheet-card">
+                <i class="fas fa-file-pdf"></i>
+                <h3>Guía Rápida de Nmap</h3>
+                <p>Todos los comandos esenciales en una página</p>
+                <a href="../../assets/pdf/cheatsheets/nmap-cheatsheet.pdf" download class="btn btn-primary">
+                    <i class="fas fa-download"></i> Descargar PDF
+                </a>
+            </div>
+        </section>
+
+        <!-- Contenido Técnico Destacado -->
+        <section class="section">
+            <h2><i class="fas fa-star"></i> Contenido Técnico Destacado</h2>
+
+            <h3>1. Escaneos Avanzados para Pentesting</h3>
+            <div class="code-block">
+                <pre><code class="language-bash"># Escaneo sigiloso con timing aleatorio
+nmap -sS -Pn --scan-delay 500ms -T2 192.168.1.100
+
+# Escaneo UDP (importante para DNS, SNMP)
+nmap -sU -p 53,161,162 192.168.1.100
+
+# Detección de servidores web alternativos
+nmap -p 80,443,8080,8443 --script http-title 192.168.1.0/24
+                </code></pre>
+            </div>
+
+            <h3>2. Scripts NSE Esenciales</h3>
+            <div class="code-block">
+                <pre><code class="language-bash"># Scripts de descubrimiento:
+nmap --script discovery 192.168.1.100
+
+# Análisis de seguridad:
+nmap --script ssh-auth-methods -p 22 192.168.1.100
+nmap --script smb-security-mode -p 445 192.168.1.100
+
+# Extracción de información:
+nmap --script http-headers -p 80,443 192.168.1.100
+nmap --script dns-zone-transfer -p 53 192.168.1.100
+                </code></pre>
+            </div>
+
+            <h3>3. Optimización de Escaneos</h3>
+            <div class="code-block">
+                <pre><code class="language-bash"># Para redes rápidas:
+nmap -T4 -n --min-rate 1000 192.168.1.100
+
+# Para redes con restricciones:
+nmap -T1 --max-rate 100 192.168.1.100
+
+# Excluir hosts del escaneo:
+nmap 192.168.1.0/24 --exclude 192.168.1.50,192.168.1.100
+                </code></pre>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="../../assets/img/logos/hackenvironment-logo-white.png" alt="HackEnvironment Logo">
+                <span>HackEnvironment</span>
+            </div>
+            <p class="footer-disclaimer">Este contenido es solo para fines educativos en entornos autorizados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/app.js"></script>
+    <script>
+        // Tabs avanzados
+        document.querySelectorAll('.adv-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                document.querySelectorAll('.adv-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.querySelectorAll('.adv-tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                document.getElementById(tabId).classList.add('active');
+                tab.classList.add('active');
+            });
+        });
+
+        // Acordeón de escenarios
+        document.querySelectorAll('.accordion-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>

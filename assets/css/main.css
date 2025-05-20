@@ -769,3 +769,149 @@ a:hover {
         max-width: 100%;
     }
 }
+
+/* Estilos específicos para nmap.html */
+.hero-subpage {
+    background: url('../img/nmap-bg.jpg') no-repeat center center/cover;
+}
+
+.intro-with-image {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.intro-with-image img {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    max-width: 50%;
+}
+
+.download-box {
+    background: rgba(0, 180, 204, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.download-box span {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.scan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.scan-card {
+    background: var(--light);
+    padding: 1rem;
+    border-radius: 8px;
+    border-top: 3px solid var(--primary);
+}
+
+.dark-mode .scan-card {
+    background: #1e1e1e;
+}
+
+.scan-card pre {
+    margin: 0.5rem 0;
+    overflow-x: auto;
+}
+
+.advanced-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+}
+
+.adv-tab {
+    padding: 0.5rem 1rem;
+    background: var(--light);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .adv-tab {
+    background: #333;
+}
+
+.adv-tab.active {
+    background: var(--primary);
+    color: white;
+}
+
+.adv-content {
+    display: none;
+    padding: 1rem;
+    background: var(--light);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.dark-mode .adv-content {
+    background: #1e1e1e;
+}
+
+.adv-content.active {
+    display: block;
+}
+
+.adv-content img {
+    max-width: 100%;
+    margin-top: 1rem;
+    border-radius: 4px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.output-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.output-card {
+    background: var(--light);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+}
+
+.dark-mode .output-card {
+    background: #1e1e1e;
+}
+
+.cheatsheet-card {
+    background: var(--light);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.dark-mode .cheatsheet-card {
+    background: #1e1e1e;
+}
+
+.cheatsheet-card i {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
