@@ -1,0 +1,36 @@
+WIRESHARK FILTERS CHEATSHEET
+
+Filtros de Captura
+------------------
+host 192.168.1.1
+net 192.168.1.0/24
+port 80
+tcp
+udp
+
+Filtros de Visualización
+------------------------
+ip.addr == 192.168.1.1
+tcp.port == 80
+udp.port == 53
+http
+dns
+
+Análisis de Sesiones
+--------------------
+tcp.stream eq 0
+http.request
+http.response
+
+Detección de Problemas
+----------------------
+tcp.analysis.retransmission
+tcp.flags.syn == 1
+tcp.window_size < 1024
+
+Otros útiles
+------------
+frame contains "contraseña"
+eth.addr == aa:bb:cc:dd:ee:ff
+
+Más info: https://wiki.wireshark.org/DisplayFilters

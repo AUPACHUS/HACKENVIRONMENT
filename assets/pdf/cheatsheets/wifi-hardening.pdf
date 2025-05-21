@@ -1,0 +1,24 @@
+WIFI HARDENING CHEATSHEET
+
+Checklist de Seguridad WiFi
+---------------------------
+- Cambia el SSID por defecto
+- Usa WPA2 o WPA3 (no WEP)
+- Contraseña robusta (>12 caracteres, mezcla de símbolos)
+- Desactiva WPS
+- Filtra MAC solo si es necesario (no es seguro por sí solo)
+- Actualiza el firmware del router
+- Desactiva administración remota
+- Reduce la potencia de emisión si es posible
+- Usa una red de invitados para dispositivos no confiables
+- Monitoriza dispositivos conectados regularmente
+
+Comandos Útiles
+---------------
+# Ver redes WiFi disponibles (Linux)
+sudo iwlist scan
+
+# Mostrar dispositivos conectados (OpenWRT)
+iw dev wlan0 station dump
+
+Más info: https://www.cisa.gov/news-events/news/securing-wireless-networks

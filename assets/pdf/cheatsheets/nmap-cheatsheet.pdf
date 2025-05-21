@@ -1,0 +1,37 @@
+NMAP CHEATSHEET
+
+Escaneos Básicos
+----------------
+nmap 192.168.1.1
+nmap 192.168.1.1-50
+nmap 192.168.1.0/24
+
+Detección de Puertos y Servicios
+-------------------------------
+nmap -sS 192.168.1.1           # Escaneo SYN (stealth)
+nmap -sU 192.168.1.1           # Escaneo UDP
+nmap -sV 192.168.1.1           # Detectar versiones de servicios
+nmap -O 192.168.1.1            # Detección de sistema operativo
+
+Escaneos Avanzados
+------------------
+nmap -A 192.168.1.1            # Detección avanzada (OS, servicios, scripts)
+nmap -p 80,443,8080 192.168.1.1 # Puertos específicos
+nmap --top-ports 20 192.168.1.1 # Top 20 puertos más comunes
+
+Scripts NSE
+-----------
+nmap --script vuln 192.168.1.1
+nmap --script discovery 192.168.1.1
+
+Optimización
+------------
+nmap -T4 192.168.1.1           # Más rápido
+nmap -T1 192.168.1.1           # Más sigiloso
+
+Guardar Resultados
+------------------
+nmap -oN resultado.txt 192.168.1.1
+nmap -oX resultado.xml 192.168.1.1
+
+Más info: https://nmap.org/book/man.html
